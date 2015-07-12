@@ -1,7 +1,5 @@
 package me.josephzhu.appinfocenter.site.util;
 
-import java.util.List;
-
 /**
  * Created by joseph on 15/7/12.
  */
