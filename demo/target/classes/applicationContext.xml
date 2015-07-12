@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder ignore-resource-not-found="true"
+                                  location="classpath*:/appinfocenter.properties"/>
+
+    <bean id="healthyCallback" class="me.josephzhu.appinfocenter.demo.Main"></bean>
+
+    <bean id="appInfoCenter" class="me.josephzhu.appinfocenter.client.AppInfoCenter">
+        <constructor-arg name="callback" ref="healthyCallback"/>
+        <constructor-arg name="queueSize" value="10000"/>
+        <constructor-arg name="appName" value="${app.name}"/>
+        <constructor-arg name="appVersion" value="${app.version}"/>
+        <constructor-arg name="redisHost" value="localhost"/>
+        <constructor-arg name="redisPort" value="6379"/>
+        <constructor-arg name="logLevel" value="Debug"/>
+    </bean>
+</beans>

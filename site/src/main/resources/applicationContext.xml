@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:property-placeholder ignore-resource-not-found="true"
+                                  location="classpath*:/appinfocenter.properties"/>
+
+    <context:component-scan base-package="me.josephzhu.appinfocenter.site">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="filters" value="stat,log4j" />
+
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="driverClassName" value="${jdbc.driver}"/>
+
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="1"/>
+        <property name="maxActive" value="5"/>
+        <property name="maxWait" value="60000"/>
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:me/josephzhu/appinfocenter/site/mapper/*.xml"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="me.josephzhu.appinfocenter.site.mapper"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="txManager"/>
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean class="me.josephzhu.appinfocenter.site.ApplicationProperties">
+        <property name="websiteBaseUrl" value="${website.baseUrl}"/>
+        <property name="websiteStaticFileBaseUrl" value="${website.staticFileBaseUrl}"/>
+    </bean>
+
+    <bean id="appInfoCenter" class="me.josephzhu.appinfocenter.client.AppInfoCenter">
+        <constructor-arg name="callback">
+            <null/>
+        </constructor-arg>
+        <constructor-arg name="queueSize" value="${queue.size}"/>
+        <constructor-arg name="appName" value="${app.name}"/>
+        <constructor-arg name="appVersion" value="${app.version}"/>
+        <constructor-arg name="redisHost" value="${redis.host}"/>
+        <constructor-arg name="redisPort" value="${redis.port}"/>
+        <constructor-arg name="logLevel" value="${log.level}"/>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.josephzhu.appinfocenter.site.mapper.MainMapper">
+
+    <select id="getLogs" resultType="me.josephzhu.appinfocenter.common.Log">
+        select l.id, a.name as appName, a.version as appVersion, s.name as serverName, s.ip as serverIp,l.context_id as contextId, l.level,l.message,l.create_time as time from logs l
+        inner join apps a on l.app_id = a.id
+        inner join servers s on l.server_id = s.id
+        where l.app_id = #{appId}
+        <if test="begin != null">
+            <![CDATA[
+            and l.create_time >= #{begin}
+            ]]>
+        </if>
+        <if test="end != null">
+            <![CDATA[
+            and l.create_time <= #{end}
+             ]]>
+        </if>
+        <if test="levels != null">
+            and l.level in
+            <foreach item="level" index="index" collection="levels" open="(" separator="," close=")">
+            #{level}
+        </foreach>
+        </if>
+        <if test="serverIds != null">
+            and l.server_id in
+            <foreach item="serverId" index="index" collection="serverIds" open="(" separator="," close=")">
+            #{serverId}
+        </foreach>
+        </if>
+        <if test="contextId != null">
+            and l.context_id = #{contextId}
+        </if>
+        order by l.create_time desc
+        limit #{start},#{count}
+
+    </select>
+
+    <select id="getLogsCount" resultType="int">
+        select count(0) from logs l
+        inner join apps a on l.app_id = a.id
+        inner join servers s on l.server_id = s.id
+        where l.app_id = #{appId}
+        <if test="begin != null">
+            <![CDATA[
+            and l.create_time >= #{begin}
+            ]]>
+        </if>
+        <if test="end != null">
+            <![CDATA[
+            and l.create_time <= #{end}
+             ]]>
+        </if>
+        <if test="levels != null">
+            and l.level in
+            <foreach item="level" index="index" collection="levels" open="(" separator="," close=")">
+            #{level}
+        </foreach>
+        </if>
+        <if test="serverIds != null">
+            and l.server_id in
+            <foreach item="serverId" index="index" collection="serverIds" open="(" separator="," close=")">
+            #{serverId}
+        </foreach>
+        </if>
+        <if test="contextId != null">
+            and l.context_id = #{contextId}
+        </if>
+    </select>
+
+</mapper>
