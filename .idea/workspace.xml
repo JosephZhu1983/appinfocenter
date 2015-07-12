@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cd6f463-3323-4778-a4e5-a64b9eb097ad" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/me/josephzhu/appinfocenter/server/DbMapper.java" afterPath="$PROJECT_DIR$/server/src/main/java/me/josephzhu/appinfocenter/server/DbMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/controller/MainController.java" afterPath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/util/TagUtil.java" afterPath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/util/TagUtil.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/doc/appinfocenter.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/controller/MainController.class" afterPath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/controller/MainController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/util/TagUtil.class" afterPath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/util/TagUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/appinfocenter.client-0.1.jar" afterPath="$PROJECT_DIR$/client/target/appinfocenter.client-0.1.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/appinfocenter.common-0.1.jar" afterPath="$PROJECT_DIR$/common/target/appinfocenter.common-0.1.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/index_jsp.java" afterPath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/index_jsp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/log_jsp.java" afterPath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/log_jsp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/client/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/common/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/status_jsp.java" afterPath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/status_jsp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="appinfocenter.iws" />
@@ -33,42 +41,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/entity/App.java">
+      <file leaf-file-name="log.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/log.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding>
-                <element signature="e#163#164#0" expanded="false" />
-                <element signature="e#188#189#0" expanded="false" />
-                <element signature="e#228#229#0" expanded="false" />
-                <element signature="e#256#257#0" expanded="false" />
-                <element signature="e#344#345#0" expanded="false" />
-                <element signature="e#374#375#0" expanded="false" />
-                <element signature="e#424#425#0" expanded="false" />
-                <element signature="e#462#463#0" expanded="false" />
-                <element signature="e#590#591#0" expanded="false" />
-                <element signature="e#617#618#0" expanded="false" />
-                <element signature="e#661#662#0" expanded="false" />
-                <element signature="e#693#694#0" expanded="false" />
-                <element signature="e#736#737#0" expanded="false" />
-                <element signature="e#773#774#0" expanded="false" />
-                <element signature="e#835#836#0" expanded="false" />
-                <element signature="e#887#888#0" expanded="false" />
-                <element signature="e#928#929#0" expanded="false" />
-                <element signature="e#964#965#0" expanded="false" />
-                <element signature="e#1023#1024#0" expanded="false" />
-                <element signature="e#1073#1074#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-6.785714">
+              <caret line="152" column="66" selection-start-line="152" selection-start-column="66" selection-end-line="152" selection-end-column="66" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="log.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/log.jsp">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30645162">
-              <caret line="152" column="66" selection-start-line="152" selection-start-column="66" selection-end-line="152" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appinfocenter.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doc/appinfocenter.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -94,31 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="status.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="status.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/status.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="10" column="83" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TagUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/util/TagUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/mapper/MainMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -356,49 +343,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="site" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appinfocenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appinfocenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appinfocenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appinfocenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appinfocenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="appinfocenter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common" />
+              <option name="myItemId" value="doc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -424,11 +369,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/doc" />
       <recent name="$PROJECT_DIR$/site/src/main/webapp/static" />
       <recent name="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page" />
       <recent name="$PROJECT_DIR$/site/src/main/resources" />
       <recent name="$PROJECT_DIR$/site/src/main/webapp/page" />
-      <recent name="$PROJECT_DIR$/site/src/main/webapp/share" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/site/src/main/webapp" />
@@ -868,12 +813,19 @@
       <workItem from="1436602307892" duration="1598000" />
       <workItem from="1436603956374" duration="16802000" />
       <workItem from="1436675505132" duration="27861000" />
-      <workItem from="1436714738206" duration="371000" />
+      <workItem from="1436714738206" duration="794000" />
     </task>
+    <task id="LOCAL-00001" summary="格式化">
+      <created>1436715249035</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1436715249035</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95962000" />
+    <option name="totallyTimeSpent" value="96385000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -920,6 +872,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="格式化" />
+    <option name="LAST_COMMIT_MESSAGE" value="格式化" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="25" />
@@ -931,20 +887,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/demo/src/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="83" selection-start-line="9" selection-start-column="3" selection-end-line="10" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/profiles/dev/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demo/src/main/resources/appinfocenter.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -956,6 +898,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="11" selection-start-line="15" selection-start-column="3" selection-end-line="28" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -984,6 +927,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="30" selection-start-line="14" selection-start-column="3" selection-end-line="15" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -991,6 +935,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+          <folding>
+            <element signature="e#572#573#0" expanded="false" />
+            <element signature="e#617#618#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1062,7 +1010,7 @@
         <state vertical-scroll-proportion="-8.555555">
           <caret line="38" column="99" selection-start-line="38" selection-start-column="99" selection-end-line="38" selection-end-column="99" />
           <folding>
-            <element signature="e#2918#2933#0" expanded="true" />
+            <element signature="e#2918#2933#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1108,14 +1056,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.7857144">
           <caret line="46" column="31" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1311,14 +1251,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/status.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="83" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/src/main/webapp/WEB-INF/custom-functions.tld">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1364,8 +1296,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/log.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30645162">
+        <state vertical-scroll-proportion="-6.785714">
           <caret line="152" column="66" selection-start-line="152" selection-start-column="66" selection-end-line="152" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="40" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/appinfocenter.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/status.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="83" selection-start-line="10" selection-start-column="83" selection-end-line="10" selection-end-column="83" />
           <folding />
         </state>
       </provider>
