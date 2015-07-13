@@ -45,7 +45,7 @@
                 </li>
             </c:forEach>
 
-            <li class="header">状态</li>
+            <li class="header">状态说明</li>
             <li><a href="#"><i class="fa fa-circle text-green"></i> <span>在线</span></a></li>
             <li><a href="#"><i class="fa fa-circle text-red"></i> <span>离线</span></a></li>
             <li><a href="#"><i class="fa fa-circle text-white"></i> <span>未知</span></a></li>

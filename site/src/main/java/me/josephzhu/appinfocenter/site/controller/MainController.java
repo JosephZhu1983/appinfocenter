@@ -1,7 +1,7 @@
 package me.josephzhu.appinfocenter.site.controller;
 
 import me.josephzhu.appinfocenter.client.AppInfoCenter;
-import me.josephzhu.appinfocenter.common.*;
+import me.josephzhu.appinfocenter.common.Log;
 import me.josephzhu.appinfocenter.site.entity.App;
 import me.josephzhu.appinfocenter.site.mapper.MainMapper;
 import me.josephzhu.appinfocenter.site.util.PagerUtil;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.lang.Exception;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -71,32 +70,34 @@ public class MainController
 
     @RequestMapping(value = "/log/{appId}", method = RequestMethod.GET)
     public ModelAndView log(@PathVariable Integer appId,
-                               @RequestParam(value = "contextId", required = false) String contextId,
-                               @RequestParam(value = "begin", required = false) Date begin,
-                               @RequestParam(value = "end", required = false) Date end,
-                               @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
-                               @RequestParam(value = "serverIds", required = false) int[] serverIds,
-                               @RequestParam(value = "levels", required = false) int[] levels)
+                            @RequestParam(value = "contextId", required = false) String contextId,
+                            @RequestParam(value = "begin", required = false) Date begin,
+                            @RequestParam(value = "end", required = false) Date end,
+                            @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
+                            @RequestParam(value = "serverIds", required = false) int[] serverIds,
+                            @RequestParam(value = "levels", required = false) int[] levels)
     {
         ModelAndView modelAndView = new ModelAndView("log");
 
         int logCount = mainMapper.getLogsCount(begin, end, contextId, levels, appId, serverIds);
         int pageCount = PagerUtil.getPageCount(logCount, PAGESIZE);
-        if(page < 1) {
+        if (page < 1)
+        {
             page = 1;
-        } else if(page > pageCount) {
+        } else if (page > pageCount)
+        {
             page = pageCount;
         }
         List<Integer> pageList = PagerUtil.generatePageList(page, pageCount);
-        modelAndView.addObject("pageList",pageList);
-        modelAndView.addObject("pageCount",pageCount);
+        modelAndView.addObject("pageList", pageList);
+        modelAndView.addObject("pageCount", pageCount);
         modelAndView.addObject("p", page);
         modelAndView.addObject("serverIds", serverIds);
         modelAndView.addObject("levels", levels);
         modelAndView.addObject("contextId", contextId);
         List<Log> logs = mainMapper.getLogs(begin, end, contextId, levels, appId, serverIds, (page - 1) * PAGESIZE, PAGESIZE);
-        modelAndView.addObject("logs",logs);
-        modelAndView.addObject("servers",mainMapper.getLogServers(appId));
+        modelAndView.addObject("logs", logs);
+        modelAndView.addObject("servers", mainMapper.getLogServers(appId));
         List<App> apps = mainMapper.getApps();
         modelAndView.addObject("currentAppId", appId);
         modelAndView.addObject("apps", apps);

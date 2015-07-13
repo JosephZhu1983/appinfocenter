@@ -1,6 +1,6 @@
 package me.josephzhu.appinfocenter.site.mapper;
 
-import me.josephzhu.appinfocenter.common.*;
+import me.josephzhu.appinfocenter.common.Log;
 import me.josephzhu.appinfocenter.site.entity.App;
 import me.josephzhu.appinfocenter.site.entity.AppDetail;
 import me.josephzhu.appinfocenter.site.entity.Server;
@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -36,9 +35,9 @@ public interface MainMapper
     @Select("select id,name,ip from servers where id in (select distinct server_id from logs where app_id = #{id})")
     List<Server> getLogServers(@Param("id") int id);
 
-    int getLogsCount(@Param("begin")Date begin, @Param("end")Date end, @Param("contextId")String contextId, @Param("levels")int[] levels, @Param("appId")Integer appId, @Param("serverIds")int[] serverIds);
+    int getLogsCount(@Param("begin") Date begin, @Param("end") Date end, @Param("contextId") String contextId, @Param("levels") int[] levels, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds);
 
-    List<Log> getLogs(@Param("begin")Date begin, @Param("end")Date end, @Param("contextId")String contextId, @Param("levels")int[] levels, @Param("appId")Integer appId, @Param("serverIds")int[] serverIds, @Param("start")int start, @Param("count")int count);
+    List<Log> getLogs(@Param("begin") Date begin, @Param("end") Date end, @Param("contextId") String contextId, @Param("levels") int[] levels, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds, @Param("start") int start, @Param("count") int count);
 
 
     @Select("select id,name,ip from servers where id in (select distinct server_id from exceptions where app_id = #{id})")

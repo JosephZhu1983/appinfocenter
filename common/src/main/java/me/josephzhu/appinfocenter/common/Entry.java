@@ -7,6 +7,15 @@ import java.util.Date;
  */
 public abstract class Entry
 {
+    protected String channelName;
+    private int id;
+    private String appName;
+    private String appVersion;
+    private String serverName;
+    private String serverIp;
+    private String contextId;
+    private Date time;
+
     public int getId()
     {
         return id;
@@ -16,15 +25,6 @@ public abstract class Entry
     {
         this.id = id;
     }
-
-    private int id;
-    protected String channelName;
-    private String appName;
-    private String appVersion;
-    private String serverName;
-    private String serverIp;
-    private String contextId;
-    private Date time;
 
     public String getChannelName()
     {

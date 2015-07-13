@@ -2,10 +2,8 @@ package me.josephzhu.appinfocenter.site.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by joseph on 15/7/13.

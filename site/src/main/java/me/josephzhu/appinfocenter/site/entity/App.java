@@ -7,6 +7,12 @@ import java.util.Date;
  */
 public class App
 {
+    private String id;
+    private String name;
+    private String version;
+    private Date lastActiveTime;
+    private int activeServers;
+
     public String getId()
     {
         return id;
@@ -17,10 +23,6 @@ public class App
         this.id = id;
     }
 
-    private String id;
-
-    private String name;
-
     public String getVersion()
     {
         return version;
@@ -30,10 +32,6 @@ public class App
     {
         this.version = version;
     }
-
-    private String version;
-    private Date lastActiveTime;
-    private int activeServers;
 
     public String getName()
     {

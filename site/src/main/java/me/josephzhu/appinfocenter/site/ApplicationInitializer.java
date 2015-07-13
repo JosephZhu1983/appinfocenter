@@ -11,19 +11,22 @@ import javax.servlet.ServletContext;
 import java.util.TimeZone;
 
 @Component
-public class ApplicationInitializer implements ApplicationListener<ContextRefreshedEvent> {
-	
-	@Autowired
-	private ApplicationProperties applicationProperties;
+public class ApplicationInitializer implements ApplicationListener<ContextRefreshedEvent>
+{
 
-	@Override
-	public void onApplicationEvent(ContextRefreshedEvent event) {
-		if(event.getApplicationContext().getParent() != null) {
+    @Autowired
+    private ApplicationProperties applicationProperties;
+
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent event)
+    {
+        if (event.getApplicationContext().getParent() != null)
+        {
 
             TimeZone.setDefault(TimeZone.getTimeZone("GMT+8"));
             WebApplicationContext webApplicationContext = ContextLoader.getCurrentWebApplicationContext();
-	        ServletContext servletContext = webApplicationContext.getServletContext();
-	        servletContext.setAttribute("appcfg", applicationProperties);
-		}
-	}
+            ServletContext servletContext = webApplicationContext.getServletContext();
+            servletContext.setAttribute("appcfg", applicationProperties);
+        }
+    }
 }
