@@ -242,9 +242,10 @@
 
                 var url = location.href;
                 url = setGetParameter(url, "page", page);
-                url = setGetParameter(url, "serverIds", serverIds);
-                url = setGetParameter(url, "levels", levels);
-
+                if (serverIds)
+                    url = setGetParameter(url, "serverIds", serverIds);
+                if (levels)
+                    url = setGetParameter(url, "levels", levels);
                 if (begin)
                     url = setGetParameter(url, "begin", begin);
                 if (end)
@@ -261,9 +262,10 @@
 
                 var url = location.href;
                 url = setGetParameter(url, "page", 1);
-                url = setGetParameter(url, "serverIds", serverIds);
-                url = setGetParameter(url, "levels", levels);
-
+                if (serverIds)
+                    url = setGetParameter(url, "serverIds", serverIds);
+                if (levels)
+                    url = setGetParameter(url, "levels", levels);
                 if (begin)
                     url = setGetParameter(url, "begin", begin);
                 if (end)

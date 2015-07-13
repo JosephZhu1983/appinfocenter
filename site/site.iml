@@ -50,16 +50,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-web:4.1.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.1.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.1.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.integration:spring-integration-mail:4.1.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.1.4.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.integration:spring-integration-core:4.1.2.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.projectreactor:reactor-core:1.1.4.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: com.goldmansachs:gs-collections:5.1.0" level="project" />
-    <orderEntry type="library" name="Maven: com.goldmansachs:gs-collections-api:5.1.0" level="project" />
-    <orderEntry type="library" name="Maven: com.lmax:disruptor:3.2.1" level="project" />
-    <orderEntry type="library" name="Maven: io.gatling:jsr166e:1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.retry:spring-retry:1.1.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-messaging:4.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:druid:1.0.14" level="project" />
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:jconsole:1.8.0">

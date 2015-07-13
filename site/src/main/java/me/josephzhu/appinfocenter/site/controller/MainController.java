@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.lang.Exception;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +27,12 @@ public class MainController
     private static int PAGESIZE = 10;
     @Autowired
     private MainMapper mainMapper;
+
+    @RequestMapping(value = "/err", method = RequestMethod.GET)
+    public ModelAndView err()
+    {
+        throw new RuntimeException("测试未处理异常");
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index()
