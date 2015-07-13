@@ -12,10 +12,13 @@ import java.util.Scanner;
  */
 public class Main implements StatusCallback
 {
+    static AppInfoCenter appInfoCenter;
+    static ApplicationContext context;
+
     public static void main(String[] args) throws Exception
     {
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        AppInfoCenter appInfoCenter = (AppInfoCenter) context.getBean("appInfoCenter");
+        context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        appInfoCenter = (AppInfoCenter) context.getBean("appInfoCenter");
         test(appInfoCenter);
 
         Scanner scan = new Scanner(System.in);
@@ -33,6 +36,20 @@ public class Main implements StatusCallback
             appInfoCenter.warning("warning消息" + i);
             appInfoCenter.error("error消息" + i);
             appInfoCenter.exception(new NullPointerException("异常信息" + i));
+            gotexception();
+        }
+    }
+
+    private static void gotexception()
+    {
+        try
+        {
+            context.getBean("asdasdas");
+
+        }
+        catch (Exception ex)
+        {
+            appInfoCenter.exception(ex);
         }
     }
 

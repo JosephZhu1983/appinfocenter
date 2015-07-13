@@ -22,13 +22,13 @@
                 </c:choose>
                 <a href="#">
                 <c:if test="${app.activeServers >0 && app.lastActiveTime != null}">
-                    <i class="fa fa-circle" style="color:green"></i>
+                    <i class="fa fa-circle text-green"></i>
                 </c:if>
                 <c:if test="${app.activeServers ==0 && app.lastActiveTime != null}">
-                    <i class="fa fa-circle" style="color:red"></i>
+                    <i class="fa fa-circle text-red"></i>
                 </c:if>
                 <c:if test="${app.lastActiveTime ==null}">
-                    <i class="fa fa-circle" style="color:white"></i>
+                    <i class="fa fa-circle text-white"></i>
                 </c:if>
                <span> ${app.name} (${app.version})</span>
 
@@ -39,14 +39,16 @@
                 <ul class="treeview-menu">
                     <li><a href="<%=request.getContextPath()%>/status/${app.id}" <c:if test='${section =="status"}'>style="color: white"</c:if>>状态</a></li>
                     <li><a href="<%=request.getContextPath()%>/log/${app.id}"  <c:if test='${section =="log"}'>style="color: white"</c:if>>日志</a></li>
-                    <li><a href="<%=request.getContextPath()%>/detail/${app.id}"  <c:if test='${section =="exception"}'>style="color: white"</c:if>>异常</a></li>
+                    <li><a href="<%=request.getContextPath()%>/exception/${app.id}"
+                           <c:if test='${section =="exception"}'>style="color: white"</c:if>>异常</a></li>
                 </ul>
                 </li>
             </c:forEach>
-            <!-- Optionally, you can add icons to the links -->
-            <%--<li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>--%>
 
-
+            <li class="header">状态</li>
+            <li><a href="#"><i class="fa fa-circle text-green"></i> <span>在线</span></a></li>
+            <li><a href="#"><i class="fa fa-circle text-red"></i> <span>离线</span></a></li>
+            <li><a href="#"><i class="fa fa-circle text-white"></i> <span>未知</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>

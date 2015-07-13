@@ -1,6 +1,6 @@
 package me.josephzhu.appinfocenter.site.mapper;
 
-import me.josephzhu.appinfocenter.common.Log;
+import me.josephzhu.appinfocenter.common.*;
 import me.josephzhu.appinfocenter.site.entity.App;
 import me.josephzhu.appinfocenter.site.entity.AppDetail;
 import me.josephzhu.appinfocenter.site.entity.Server;
@@ -37,4 +37,18 @@ public interface MainMapper
     int getLogsCount(@Param("begin")Date begin, @Param("end")Date end, @Param("contextId")String contextId, @Param("levels")int[] levels, @Param("appId")Integer appId, @Param("serverIds")int[] serverIds);
 
     List<Log> getLogs(@Param("begin")Date begin, @Param("end")Date end, @Param("contextId")String contextId, @Param("levels")int[] levels, @Param("appId")Integer appId, @Param("serverIds")int[] serverIds, @Param("start")int start, @Param("count")int count);
+
+
+    @Select("select id,name,ip from servers where id in (select distinct server_id from exceptions where app_id = #{id})")
+    List<Server> getExceptionServers(@Param("id") int id);
+
+    @Select("select distinct type from exceptions where app_id = #{id}")
+    List<String> getExceptionTypes(@Param("id") int id);
+
+    int getExceptionsCount(@Param("begin") Date begin, @Param("end") Date end, @Param("contextId") String contextId, @Param("types") String[] types, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds);
+
+    List<me.josephzhu.appinfocenter.common.Exception> getExceptions(@Param("begin") Date begin, @Param("end") Date end, @Param("contextId") String contextId, @Param("types") String[] types, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds, @Param("start") int start, @Param("count") int count);
+
+
+
 }

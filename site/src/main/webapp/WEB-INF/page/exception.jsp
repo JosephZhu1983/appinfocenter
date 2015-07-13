@@ -60,29 +60,16 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>按级别：
-                                    <button id="selectAllLevels" class="btn-xs bg-blue copyContextId">全选
+                                <label>按类型：
+                                    <button id="selectAllTypes" class="btn-xs bg-blue copyContextId">全选
                                     </button>
                                 </label>
-                                <select id="levels" class="form-control select2" multiple="multiple"
-                                        data-placeholder="选择一个或多个级别">
-
-                                    <option value="1"
-                                            <c:if test="${levels == null || fn:intcontains(levels,1) }">selected</c:if>>
-                                        DEBUG
-                                    </option>
-                                    <option value="2"
-                                            <c:if test="${levels == null || fn:intcontains(levels,2) }">selected</c:if>>
-                                        INFO
-                                    </option>
-                                    <option value="3"
-                                            <c:if test="${levels == null || fn:intcontains(levels,3) }">selected</c:if>>
-                                        WARNING
-                                    </option>
-                                    <option value="4"
-                                            <c:if test="${levels == null || fn:intcontains(levels,4) }">selected</c:if>>
-                                        ERROR
-                                    </option>
+                                <select id="types" class="form-control select2" multiple="multiple"
+                                        data-placeholder="选择一个或多个异常类型">
+                                    <c:forEach var="type" items="${alltypes}">
+                                        <option value="${type}"
+                                                <c:if test="${types == null || fn:stringcontains(types,type) }">selected</c:if>>${type}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -136,9 +123,10 @@
                             <th>发生时间</th>
                             <th>服务器名</th>
                             <th>服务器IP</th>
-                            <th>级别</th>
-                            <th style="width: 50%">消息</th>
+                            <th>类型</th>
+                            <th>消息</th>
                             <th style="width: 60px">上下文</th>
+                            <th style="width: 60px">详细</th>
                         </tr>
                         <c:forEach var="log" items="${logs}">
                             <tr>
@@ -147,18 +135,7 @@
                                 <td>${log.serverName}</td>
                                 <td>${log.serverIp}</td>
                                 <td>
-                                    <c:if test="${log.level ==1}">
-                                        <small class="label bg-green">DEBUG</small>
-                                    </c:if>
-                                    <c:if test="${log.level ==2}">
-                                        <small class="label bg-blue">INFO</small>
-                                    </c:if>
-                                    <c:if test="${log.level ==3}">
-                                        <small class="label bg-orange">WARN</small>
-                                    </c:if>
-                                    <c:if test="${log.level ==4}">
-                                        <small class="label bg-red">ERROR</small>
-                                    </c:if>
+                                        ${log.type}
                                 </td>
                                 <td>${log.message}</td>
                                 <td>
@@ -166,7 +143,35 @@
                                             data-clipboard-text="${log.contextId}">复制
                                     </button>
                                 </td>
+                                <td>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn-xs bg-blue" data-toggle="modal"
+                                            data-target="#stackTrace${log.id}">
+                                        查看
+                                    </button>
 
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="stackTrace${log.id}" tabindex="-1" role="dialog"
+                                         aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                    <h4 class="modal-title"
+                                                        id="myModalLabel"> ${log.serverName}/${log.serverIp} @
+                                                        <fmt:formatDate value="${log.time}"
+                                                                        pattern="yyyy/MM/dd HH:mm:ss"/>
+                                                        - ${log.message}</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                        ${log.stackTrace}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         </c:forEach>
 
@@ -236,14 +241,14 @@
             var end;
             $(".pagination a").click(function () {
                 var page = $(this).attr("data-p");
-                var levels = $("#levels").val();
+                var types = $("#types").val();
                 var serverIds = $("#serverIds").val();
                 var contextId = $("#contextId").val();
 
                 var url = location.href;
                 url = setGetParameter(url, "page", page);
                 url = setGetParameter(url, "serverIds", serverIds);
-                url = setGetParameter(url, "levels", levels);
+                url = setGetParameter(url, "types", types);
 
                 if (begin)
                     url = setGetParameter(url, "begin", begin);
@@ -255,14 +260,14 @@
             });
             $("#search").click(function () {
 
-                var levels = $("#levels").val();
+                var types = $("#types").val();
                 var serverIds = $("#serverIds").val();
                 var contextId = $("#contextId").val();
 
                 var url = location.href;
                 url = setGetParameter(url, "page", 1);
                 url = setGetParameter(url, "serverIds", serverIds);
-                url = setGetParameter(url, "levels", levels);
+                url = setGetParameter(url, "types", types);
 
                 if (begin)
                     url = setGetParameter(url, "begin", begin);
@@ -275,15 +280,15 @@
             });
             $("#reset").click(function () {
 
-                location.href = '<%=request.getContextPath()%>/log/${currentAppId}';
+                location.href = '<%=request.getContextPath()%>/exception/${currentAppId}';
             });
             $("#selectAllServers").click(function () {
 
                 $("#serverIds option").attr("selected", "seleted")
             });
-            $("#selectAllLevels").click(function () {
+            $("#selectAllTypes").click(function () {
 
-                $("#levels option").attr("selected", "seleted")
+                $("#types option").attr("selected", "seleted")
             });
             $('#daterange').daterangepicker({timePicker: true, timePickerIncrement: 1, format: 'YYYY-MM-DD HH:mm'});
             <c:if test="${begin != null}">

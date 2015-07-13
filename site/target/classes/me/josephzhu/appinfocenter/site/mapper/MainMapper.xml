@@ -71,4 +71,73 @@
         </if>
     </select>
 
+
+
+    <select id="getExceptions" resultType="me.josephzhu.appinfocenter.common.Exception">
+        select l.id, a.name as appName, a.version as appVersion, s.name as serverName, s.ip as serverIp,l.context_id as contextId, l.type, l.stacktrace,l.message,l.create_time as time from exceptions l
+        inner join apps a on l.app_id = a.id
+        inner join servers s on l.server_id = s.id
+        where l.app_id = #{appId}
+        <if test="begin != null">
+            <![CDATA[
+            and l.create_time >= #{begin}
+            ]]>
+        </if>
+        <if test="end != null">
+            <![CDATA[
+            and l.create_time <= #{end}
+             ]]>
+        </if>
+        <if test="types != null">
+            and l.type in
+            <foreach item="type" index="index" collection="types" open="(" separator="," close=")">
+                #{type}
+            </foreach>
+        </if>
+        <if test="serverIds != null">
+            and l.server_id in
+            <foreach item="serverId" index="index" collection="serverIds" open="(" separator="," close=")">
+                #{serverId}
+            </foreach>
+        </if>
+        <if test="contextId != null">
+            and l.context_id = #{contextId}
+        </if>
+        order by l.create_time desc
+        limit #{start},#{count}
+
+    </select>
+
+    <select id="getExceptionsCount" resultType="int">
+        select count(0) from exceptions l
+        inner join apps a on l.app_id = a.id
+        inner join servers s on l.server_id = s.id
+        where l.app_id = #{appId}
+        <if test="begin != null">
+            <![CDATA[
+            and l.create_time >= #{begin}
+            ]]>
+        </if>
+        <if test="end != null">
+            <![CDATA[
+            and l.create_time <= #{end}
+             ]]>
+        </if>
+        <if test="types != null">
+            and l.type in
+            <foreach item="type" index="index" collection="types" open="(" separator="," close=")">
+                #{type}
+            </foreach>
+        </if>
+        <if test="serverIds != null">
+            and l.server_id in
+            <foreach item="serverId" index="index" collection="serverIds" open="(" separator="," close=")">
+                #{serverId}
+            </foreach>
+        </if>
+        <if test="contextId != null">
+            and l.context_id = #{contextId}
+        </if>
+    </select>
+
 </mapper>
