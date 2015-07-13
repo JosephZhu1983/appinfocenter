@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : utf-8
 
- Date: 07/12/2015 23:42:14 PM
+ Date: 07/13/2015 21:16:24 PM
 */
 
 SET NAMES utf8;
@@ -50,7 +50,7 @@ CREATE TABLE `exceptions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(255) DEFAULT NULL,
   `message` varchar(500) DEFAULT NULL,
-  `stacktrace` varchar(2000) DEFAULT NULL,
+  `stacktrace` varchar(20000) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `server_id` int(11) DEFAULT NULL,
   `app_id` int(11) DEFAULT NULL,
@@ -59,8 +59,9 @@ CREATE TABLE `exceptions` (
   KEY `type` (`type`),
   KEY `server_id` (`server_id`),
   KEY `app_id` (`app_id`),
-  KEY `context_id` (`context_id`) USING HASH
-) ENGINE=InnoDB AUTO_INCREMENT=2563 DEFAULT CHARSET=utf8;
+  KEY `context_id` (`context_id`) USING HASH,
+  KEY `create_time` (`create_time`)
+) ENGINE=InnoDB AUTO_INCREMENT=3137 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `logs`
@@ -78,8 +79,9 @@ CREATE TABLE `logs` (
   KEY `server_id` (`server_id`),
   KEY `app_id` (`app_id`),
   KEY `level` (`level`),
-  KEY `context_id` (`context_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10242 DEFAULT CHARSET=utf8;
+  KEY `context_id` (`context_id`) USING BTREE,
+  KEY `create_time` (`create_time`)
+) ENGINE=InnoDB AUTO_INCREMENT=11440 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `servers`
@@ -102,7 +104,7 @@ delimiter ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_create_exception`(
 IN p_type varchar(255),
 IN p_message varchar(500),
-IN p_stacktrace varchar(2000),
+IN p_stacktrace varchar(20000),
 IN p_create_time datetime,
 IN p_context_id varchar(50),
 IN p_server_name varchar(255),
@@ -139,7 +141,8 @@ IF v_error = 1 THEN
 ELSE
 	COMMIT;
 END IF;
-SELECT v_error;
+
+SELECT LAST_INSERT_ID();
 
 END
  ;;
@@ -189,7 +192,8 @@ IF v_error = 1 THEN
 ELSE
 	COMMIT;
 END IF;
-SELECT v_error;
+
+SELECT LAST_INSERT_ID();
 
 END
  ;;

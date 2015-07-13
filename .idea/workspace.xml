@@ -1,29 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cd6f463-3323-4778-a4e5-a64b9eb097ad" name="Default" comment="fix some bugs or something like that!">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/entity/AppDetail.class" afterPath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/entity/AppDetail.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/me/josephzhu/appinfocenter/client/AppInfoCenter.class" afterPath="$PROJECT_DIR$/client/target/classes/me/josephzhu/appinfocenter/client/AppInfoCenter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/target/classes/me/josephzhu/appinfocenter/demo/Main.class" afterPath="$PROJECT_DIR$/demo/target/classes/me/josephzhu/appinfocenter/demo/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/mapper/MainMapper.class" afterPath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/mapper/MainMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/appinfocenter.client-0.1.jar" afterPath="$PROJECT_DIR$/client/target/appinfocenter.client-0.1.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/appinfocenter.common-0.1.jar" afterPath="$PROJECT_DIR$/common/target/appinfocenter.common-0.1.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/log_jsp.class" afterPath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/log_jsp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/status_jsp.class" afterPath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/status_jsp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/controller/AjaxController.java" afterPath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/controller/AjaxController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/entity/App.java" afterPath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/entity/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/ApplicationInitializer.java" afterPath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/ApplicationInitializer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/ApplicationProperties.java" afterPath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/ApplicationProperties.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/entity/ChartsData.java" afterPath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/entity/ChartsData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/src/main/java/me/josephzhu/appinfocenter/common/Entry.java" afterPath="$PROJECT_DIR$/common/src/main/java/me/josephzhu/appinfocenter/common/Entry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/controller/MainController.java" afterPath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/mapper/MainMapper.java" afterPath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/mapper/MainMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/util/PagerUtil.java" afterPath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/util/PagerUtil.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/log_jsp.java" afterPath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/log_jsp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/client/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/common/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/share/side.jsp" afterPath="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/share/side.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/status_jsp.java" afterPath="$PROJECT_DIR$/site/target/tmp/jsp/org/apache/jsp/WEB_002dINF/page/status_jsp.java" />
+    <list default="true" id="4cd6f463-3323-4778-a4e5-a64b9eb097ad" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/entity/App.class" afterPath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/entity/App.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/ApplicationInitializer.class" afterPath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/ApplicationInitializer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/ApplicationProperties.class" afterPath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/ApplicationProperties.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/classes/me/josephzhu/appinfocenter/common/Entry.class" afterPath="$PROJECT_DIR$/common/target/classes/me/josephzhu/appinfocenter/common/Entry.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/controller/MainController.class" afterPath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/controller/MainController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/util/PagerUtil.class" afterPath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/util/PagerUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/target/classes/appinfocenter.properties" afterPath="$PROJECT_DIR$/demo/target/classes/appinfocenter.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/appinfocenter.properties" afterPath="$PROJECT_DIR$/site/target/classes/appinfocenter.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/appinfocenter.sql" afterPath="$PROJECT_DIR$/doc/appinfocenter.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/applicationContext.xml" afterPath="$PROJECT_DIR$/site/target/classes/applicationContext.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="appinfocenter.iws" />
@@ -85,8 +73,8 @@
       <file leaf-file-name="AjaxController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/controller/AjaxController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.0305883">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.73365617">
+              <caret line="66" column="34" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1076#1077#0" expanded="true" />
@@ -894,7 +882,7 @@
       <workItem from="1436714738206" duration="1381000" />
       <workItem from="1436751572003" duration="17513000" />
       <workItem from="1436777208158" duration="29000" />
-      <workItem from="1436777261072" duration="14243000" />
+      <workItem from="1436777261072" duration="14307000" />
     </task>
     <task id="LOCAL-00001" summary="格式化">
       <created>1436715249035</created>
@@ -938,11 +926,17 @@
       <option name="project" value="LOCAL" />
       <updated>1436793021334</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix some bugs or something like that!">
+      <created>1436793331999</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1436793331999</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128757000" />
+    <option name="totallyTimeSpent" value="128821000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -955,18 +949,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1400" height="877" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43821657" sideWeight="0.49299926" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43821657" sideWeight="0.49299926" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4535032" sideWeight="0.50700074" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33308768" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.42292994" sideWeight="0.4944731" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42292994" sideWeight="0.4944731" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3987261" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1004,8 +998,6 @@
     <MESSAGE value=":)" />
     <MESSAGE value="fix some bugs or something like that!" />
     <option name="LAST_COMMIT_MESSAGE" value="fix some bugs or something like that!" />
-    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1436,8 +1428,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/controller/AjaxController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0305883">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.73365617">
+          <caret line="66" column="34" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1076#1077#0" expanded="true" />
