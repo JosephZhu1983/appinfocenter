@@ -26,6 +26,12 @@ public class AjaxController
     @Autowired
     private MainMapper mainMapper;
 
+    @RequestMapping(value = "/deleteStatus/{statusId}", method = RequestMethod.DELETE)
+    public boolean deleteStatus(@PathVariable Integer statusId)
+    {
+        return mainMapper.deleteStatus(statusId) == 1;
+    }
+
     @RequestMapping(value = "/logcharts/{appId}", method = RequestMethod.GET)
     public ChartsData logcharts(@PathVariable Integer appId)
     {

@@ -7,6 +7,12 @@ import java.util.Date;
  */
 public class AppDetail
 {
+    private String serverName;
+    private String serverIp;
+    private Date lastActiveTime;
+    private int idleMins;
+    private int statusId;
+
     public String getServerName()
     {
         return serverName;
@@ -37,10 +43,6 @@ public class AppDetail
         this.lastActiveTime = lastActiveTime;
     }
 
-    private String serverName;
-    private String serverIp;
-    private Date lastActiveTime;
-
     public int getIdleMins()
     {
         return idleMins;
@@ -51,5 +53,13 @@ public class AppDetail
         this.idleMins = idleMins;
     }
 
-    private int idleMins;
+    public int getStatusId()
+    {
+        return statusId;
+    }
+
+    public void setStatusId(int statusId)
+    {
+        this.statusId = statusId;
+    }
 }

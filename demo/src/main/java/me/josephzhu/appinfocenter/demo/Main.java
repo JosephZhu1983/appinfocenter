@@ -29,17 +29,17 @@ public class Main implements StatusCallback
 
     public static void test(AppInfoCenter appInfoCenter)
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 2; i++)
         {
-            appInfoCenter.debug("debug消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息" + i);
-            appInfoCenter.info("info消息" + i);
-            appInfoCenter.warning("warning消息" + i);
-            appInfoCenter.error("error消息" + i);
-            appInfoCenter.exception(new NullPointerException("异常信息" + i));
+            appInfoCenter.debug("11debug消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息" + i);
+            appInfoCenter.info("11info消息" + i);
+            appInfoCenter.warning("11warning消息" + i);
+            appInfoCenter.error("11error消息" + i);
+            appInfoCenter.exception(new NullPointerException("11异常信息" + i));
             gotexception();
         }
 
-        throw new RuntimeException("这是一个未处理异常");
+        throw new RuntimeException("11这是一个未处理异常");
     }
 
     private static void gotexception()

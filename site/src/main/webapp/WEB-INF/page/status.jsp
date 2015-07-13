@@ -77,7 +77,7 @@
                                 <td><fmt:formatDate value="${status.lastActiveTime}"
                                                     pattern="yyyy/MM/dd HH:mm:ss"/></td>
                                 <td>
-                                    <button type="button" class="btn-xs bg-red">
+                                    <button type="button" class="btn-xs bg-red deleteStatus" data="${status.statusId}">
                                         删除
                                     </button>
                                 </td>
@@ -99,6 +99,23 @@
                     <script type="text/javascript">
 
                         $(document).ready(function () {
+
+                            $(".deleteStatus").click(function () {
+                                var id = $(this).attr("data");
+                                $.ajax({
+                                    type: "delete",
+                                    url: "<%=request.getContextPath()%>/ajax/deleteStatus/" + id,
+                                    success: function (result) {
+                                        if (result) {
+                                            location.href = location.href;
+                                        }
+                                    },
+                                    error: function (errorMsg) {
+                                        alert(errorMsg);
+                                    }
+                                });
+                            });
+
                             // 路径配置
                             require.config({
                                 paths: {

@@ -4,6 +4,7 @@ import me.josephzhu.appinfocenter.common.*;
 import me.josephzhu.appinfocenter.site.entity.App;
 import me.josephzhu.appinfocenter.site.entity.AppDetail;
 import me.josephzhu.appinfocenter.site.entity.Server;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -28,7 +29,7 @@ public interface MainMapper
             "group by a.id order by activeServers desc, a.`name` asc")
     List<App> getApps();
 
-    @Select("select b.name as serverName,b.ip as serverIp,a.last_active_time as lastActiveTime,TIMESTAMPDIFF(MINUTE, a.last_active_time, NOW()) as idleMins from app_status a " +
+    @Select("select a.id as statusId,b.name as serverName,b.ip as serverIp,a.last_active_time as lastActiveTime,TIMESTAMPDIFF(MINUTE, a.last_active_time, NOW()) as idleMins from app_status a " +
             "inner join servers b on a.server_id = b.id where a.app_id = #{id} order by a.last_active_time desc")
     List<AppDetail> getAppDetail(@Param("id") int id);
 
@@ -56,4 +57,6 @@ public interface MainMapper
     @Select("select count(0) from exceptions where create_time>=#{begin} and create_time<=#{end} and app_id=${app_id}")
     int getExceptionChartCount(@Param("app_id") int appId, @Param("begin") Date begin, @Param("end") Date end);
 
+    @Delete("delete from app_status where id=#{id}")
+    int deleteStatus(@Param("id") int statusId);
 }
