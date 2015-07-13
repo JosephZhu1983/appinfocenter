@@ -1,5 +1,6 @@
 package me.josephzhu.appinfocenter.site.controller;
 
+import me.josephzhu.appinfocenter.client.AppInfoCenter;
 import me.josephzhu.appinfocenter.common.*;
 import me.josephzhu.appinfocenter.site.entity.App;
 import me.josephzhu.appinfocenter.site.mapper.MainMapper;
@@ -26,13 +27,20 @@ public class MainController
 {
     private static int PAGESIZE = 10;
     @Autowired
+    private AppInfoCenter appInfoCenter;
+    @Autowired
     private MainMapper mainMapper;
 
-    @RequestMapping(value = "/err", method = RequestMethod.GET)
-    public ModelAndView err()
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public ModelAndView test()
     {
+        appInfoCenter.debug("测试debug日志");
+        appInfoCenter.info("测试info日志");
+        appInfoCenter.warning("测试warning日志");
+        appInfoCenter.error("测试error日志");
         throw new RuntimeException("测试未处理异常");
     }
+
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index()

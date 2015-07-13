@@ -17,6 +17,8 @@
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+    <bean id="exceptionResolver" class="me.josephzhu.appinfocenter.client.ExceptionResolver"/>
+
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/page/"/>
         <property name="suffix" value=".jsp"/>
