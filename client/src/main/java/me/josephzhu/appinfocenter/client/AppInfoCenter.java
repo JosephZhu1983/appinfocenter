@@ -112,7 +112,7 @@ public class AppInfoCenter
                 {
                     try
                     {
-                        Thread.sleep(10000);
+                        Thread.sleep(1000);
                     }
                     catch (InterruptedException e)
                     {
@@ -122,6 +122,15 @@ public class AppInfoCenter
             }
         });
         backgroundStatusSubmitter.start();
+
+        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
+        {
+            @Override
+            public void uncaughtException(Thread t, Throwable e)
+            {
+                exception(e);
+            }
+        });
     }
 
     private void updateStatus()
@@ -214,7 +223,7 @@ public class AppInfoCenter
         }
     }
 
-    public void exception(java.lang.Exception ex)
+    public void exception(Throwable ex)
     {
         Exception exception = new Exception();
         initEntry(exception);

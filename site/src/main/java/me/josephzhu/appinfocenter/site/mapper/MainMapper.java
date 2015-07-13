@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -49,6 +50,10 @@ public interface MainMapper
 
     List<me.josephzhu.appinfocenter.common.Exception> getExceptions(@Param("begin") Date begin, @Param("end") Date end, @Param("contextId") String contextId, @Param("types") String[] types, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds, @Param("start") int start, @Param("count") int count);
 
+    @Select("select count(0) from logs where create_time>=#{begin} and create_time<=#{end} and app_id=${app_id} and level=${level}")
+    int getLogChartData(@Param("level") int level, @Param("app_id") int appId, @Param("begin") Date begin, @Param("end") Date end);
 
+    @Select("select count(0) from exceptions where create_time>=#{begin} and create_time<=#{end} and app_id=${app_id}")
+    int getExceptionChartCount(@Param("app_id") int appId, @Param("begin") Date begin, @Param("end") Date end);
 
 }

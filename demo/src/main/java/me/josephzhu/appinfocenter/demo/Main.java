@@ -29,7 +29,7 @@ public class Main implements StatusCallback
 
     public static void test(AppInfoCenter appInfoCenter)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 100; i++)
         {
             appInfoCenter.debug("debug消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息" + i);
             appInfoCenter.info("info消息" + i);
@@ -38,6 +38,8 @@ public class Main implements StatusCallback
             appInfoCenter.exception(new NullPointerException("异常信息" + i));
             gotexception();
         }
+
+        throw new RuntimeException("这是一个未处理异常");
     }
 
     private static void gotexception()

@@ -38,4 +38,12 @@ public class TagUtil
         }
         return result;
     }
+
+    public static String shortname(String s)
+    {
+        int i = s.lastIndexOf('.');
+        if (i > 0)
+            return s.substring(i + 1);
+        return s;
+    }
 }

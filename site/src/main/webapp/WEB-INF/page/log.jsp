@@ -52,11 +52,11 @@
         <section class="content">
 
             <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">搜索</h3>
+                <div class="box-header with-border" id="onoffsearchsection">
+                    <h3 class="box-title">搜索 (点击展开或收缩)</h3>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
+                <div class="box-body" id="searchsection">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -129,6 +129,8 @@
                     <button id="search" class="btn bg-blue btn-flat margin">搜索</button>
                     <button id="reset" class="btn bg-light-blue btn-flat margin">查询所有</button>
                 </div>
+            </div>
+            <div class="box box-info">
                 <!-- /.box-body -->
                 <div class="box-body">
                     <table class="table table-bordered" id="logs">
@@ -234,12 +236,18 @@
 
             var begin;
             var end;
+
+
+            $("#searchsection").hide();
+            $("#onoffsearchsection").click(function () {
+                $("#searchsection").slideToggle();
+            });
+
             $(".pagination a").click(function () {
                 var page = $(this).attr("data-p");
                 var levels = $("#levels").val();
                 var serverIds = $("#serverIds").val();
                 var contextId = $("#contextId").val();
-
                 var url = location.href;
                 url = setGetParameter(url, "page", page);
                 if (serverIds)
@@ -255,11 +263,9 @@
                 location.href = url.toString();
             });
             $("#search").click(function () {
-
                 var levels = $("#levels").val();
                 var serverIds = $("#serverIds").val();
                 var contextId = $("#contextId").val();
-
                 var url = location.href;
                 url = setGetParameter(url, "page", 1);
                 if (serverIds)
@@ -287,7 +293,7 @@
 
                 $("#levels option").attr("selected", "seleted")
             });
-            $('#daterange').daterangepicker({timePicker: true, timePickerIncrement: 1, format: 'YYYY-MM-DD HH:mm'});
+            $('#daterange').daterangepicker({timePicker: true, timePickerIncrement: 10, format: 'YYYY-MM-DD HH:mm'});
             <c:if test="${begin != null}">
             $('#daterange').data('daterangepicker').setStartDate('${begin}');
             begin = '${begin}';

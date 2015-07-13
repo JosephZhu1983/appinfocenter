@@ -52,11 +52,11 @@
         <section class="content">
 
             <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">搜索</h3>
+                <div class="box-header with-border" id="onoffsearchsection">
+                    <h3 class="box-title">搜索 (点击展开或收缩)</h3>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body">
+                <div class="box-body" id="searchsection">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -116,6 +116,9 @@
                     <button id="search" class="btn bg-blue btn-flat margin">搜索</button>
                     <button id="reset" class="btn bg-light-blue btn-flat margin">查询所有</button>
                 </div>
+            </div>
+            <!-- /.box -->
+            <div class="box box-info">
                 <!-- /.box-body -->
                 <div class="box-body">
                     <table class="table table-bordered" id="logs">
@@ -124,7 +127,7 @@
                             <th>服务器名</th>
                             <th>服务器IP</th>
                             <th>类型</th>
-                            <th>消息</th>
+                            <th style="width: 40%">消息</th>
                             <th style="width: 60px">上下文</th>
                             <th style="width: 60px">详细</th>
                         </tr>
@@ -135,7 +138,7 @@
                                 <td>${log.serverName}</td>
                                 <td>${log.serverIp}</td>
                                 <td>
-                                        ${log.type}
+                                        ${fn:shortname(log.type)}
                                 </td>
                                 <td>${log.message}</td>
                                 <td>
@@ -206,9 +209,8 @@
 
 
                 </div>
-            </div>
-            <!-- /.box -->
 
+            </div>
 
         </section>
         <!-- /.content -->
@@ -236,15 +238,36 @@
         }
 
         $(document).ready(function () {
+            $("#searchsection").hide();
+            $("#onoffsearchsection").click(function () {
+                $("#searchsection").slideToggle();
+            });
 
             var begin;
             var end;
+
+            $('#daterange').daterangepicker({timePicker: true, timePickerIncrement: 10, format: 'YYYY-MM-DD HH:mm'});
+            <c:if test="${begin != null}">
+            $('#daterange').data('daterangepicker').setStartDate('${begin}');
+            begin = '${begin}';
+            </c:if>
+            <c:if test="${end != null}">
+            $('#daterange').data('daterangepicker').setEndDate('${end}');
+            end = '${end}';
+            </c:if>
+            $('#daterange').on('apply.daterangepicker', function (ev, picker) {
+                begin = picker.startDate.format('YYYY/MM/DD HH:mm');
+                end = picker.endDate.format('YYYY/MM/DD HH:mm');
+            });
+
+
+
             $(".pagination a").click(function () {
                 var page = $(this).attr("data-p");
+
                 var types = $("#types").val();
                 var serverIds = $("#serverIds").val();
                 var contextId = $("#contextId").val();
-
                 var url = location.href;
                 url = setGetParameter(url, "page", page);
                 if (serverIds)
@@ -260,11 +283,9 @@
                 location.href = url.toString();
             });
             $("#search").click(function () {
-
                 var types = $("#types").val();
                 var serverIds = $("#serverIds").val();
                 var contextId = $("#contextId").val();
-
                 var url = location.href;
                 url = setGetParameter(url, "page", 1);
                 if (serverIds)
@@ -292,19 +313,7 @@
 
                 $("#types option").attr("selected", "seleted")
             });
-            $('#daterange').daterangepicker({timePicker: true, timePickerIncrement: 1, format: 'YYYY-MM-DD HH:mm'});
-            <c:if test="${begin != null}">
-            $('#daterange').data('daterangepicker').setStartDate('${begin}');
-            begin = '${begin}';
-            </c:if>
-            <c:if test="${end != null}">
-            $('#daterange').data('daterangepicker').setEndDate('${end}');
-            end = '${end}';
-            </c:if>
-            $('#daterange').on('apply.daterangepicker', function (ev, picker) {
-                begin = picker.startDate.format('YYYY/MM/DD HH:mm');
-                end = picker.endDate.format('YYYY/MM/DD HH:mm');
-            });
+
 
             $(".copyContextId").each(function (i) {
                 var client = new ZeroClipboard(document.getElementById($(this).attr("id")));

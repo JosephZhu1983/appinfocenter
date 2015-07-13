@@ -8,6 +8,7 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.ServletContext;
+import java.util.TimeZone;
 
 @Component
 public class ApplicationInitializer implements ApplicationListener<ContextRefreshedEvent> {
@@ -18,7 +19,9 @@ public class ApplicationInitializer implements ApplicationListener<ContextRefres
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		if(event.getApplicationContext().getParent() != null) {
-			WebApplicationContext webApplicationContext = ContextLoader.getCurrentWebApplicationContext();
+
+            TimeZone.setDefault(TimeZone.getTimeZone("GMT+8"));
+            WebApplicationContext webApplicationContext = ContextLoader.getCurrentWebApplicationContext();
 	        ServletContext servletContext = webApplicationContext.getServletContext();
 	        servletContext.setAttribute("appcfg", applicationProperties);
 		}

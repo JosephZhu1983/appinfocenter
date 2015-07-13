@@ -21,4 +21,10 @@
         <function-signature>boolean stringcontains(java.lang.String[],java.lang.String)
         </function-signature>
     </function>
+    <function>
+        <name>shortname</name>
+        <function-class>me.josephzhu.appinfocenter.site.util.TagUtil</function-class>
+        <function-signature>java.lang.String shortname(java.lang.String)
+        </function-signature>
+    </function>
 </taglib>

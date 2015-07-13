@@ -61,7 +61,7 @@
         <constructor-arg name="appVersion" value="${app.version}"/>
         <constructor-arg name="redisHost" value="localhost"/>
         <constructor-arg name="redisPort" value="6379"/>
-        <constructor-arg name="logLevel" value="Debug"/>
+        <constructor-arg name="logLevel" value="Warning"/>
     </bean>
 
 
