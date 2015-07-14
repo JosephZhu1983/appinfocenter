@@ -11,11 +11,22 @@
  Target Server Version : 50624
  File Encoding         : utf-8
 
- Date: 07/13/2015 21:16:24 PM
+ Date: 07/14/2015 20:47:01 PM
 */
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+--  Table structure for `accounts`
+-- ----------------------------
+DROP TABLE IF EXISTS `accounts`;
+CREATE TABLE `accounts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `app_status`
@@ -40,7 +51,7 @@ CREATE TABLE `apps` (
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`,`version`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `exceptions`
@@ -61,7 +72,7 @@ CREATE TABLE `exceptions` (
   KEY `app_id` (`app_id`),
   KEY `context_id` (`context_id`) USING HASH,
   KEY `create_time` (`create_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=3137 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3138 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `logs`
@@ -81,7 +92,7 @@ CREATE TABLE `logs` (
   KEY `level` (`level`),
   KEY `context_id` (`context_id`) USING BTREE,
   KEY `create_time` (`create_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=11440 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11442 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `servers`
