@@ -1,12 +1,16 @@
 me/josephzhu/appinfocenter/site/controller/MainController.class
 me/josephzhu/appinfocenter/site/entity/AppDetail.class
+me/josephzhu/appinfocenter/site/interceptor/PermissionInterceptor.class
 me/josephzhu/appinfocenter/site/ApplicationProperties.class
+me/josephzhu/appinfocenter/site/interceptor/LoginInterceptor.class
 me/josephzhu/appinfocenter/site/entity/Server.class
 me/josephzhu/appinfocenter/site/entity/Series.class
 me/josephzhu/appinfocenter/site/ApplicationInitializer.class
 me/josephzhu/appinfocenter/site/util/TagUtil.class
 me/josephzhu/appinfocenter/site/controller/AjaxController.class
+me/josephzhu/appinfocenter/site/entity/LoginUser.class
 me/josephzhu/appinfocenter/site/mapper/MainMapper.class
+me/josephzhu/appinfocenter/site/util/MD5.class
 me/josephzhu/appinfocenter/site/entity/ChartsData.class
 me/josephzhu/appinfocenter/site/util/PagerUtil.class
 me/josephzhu/appinfocenter/site/entity/App.class

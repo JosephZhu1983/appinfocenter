@@ -12,8 +12,8 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link href="${appcfg.websiteStaticFileBaseUrl}bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet" type="text/css"/>
-    <link href="http://cdn.staticfile.org/ionicons/1.5.2/css/ionicons.css" rel="stylesheet" type="text/css"/>
+    <link href="${appcfg.websiteStaticFileBaseUrl}bootstrap/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="${appcfg.websiteStaticFileBaseUrl}bootstrap/css/ionicons.min.css"rel="stylesheet" type="text/css"/>
     <link href="${appcfg.websiteStaticFileBaseUrl}dist/css/AdminLTE.css" rel="stylesheet" type="text/css"/>
     <link href="${appcfg.websiteStaticFileBaseUrl}dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
     <link href="${appcfg.websiteStaticFileBaseUrl}plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet"
@@ -28,7 +28,6 @@
     <script src="${appcfg.websiteStaticFileBaseUrl}plugins/jQuery/jQuery-2.1.4.min.js" type="text/javascript"></script>
     <script src="${appcfg.websiteStaticFileBaseUrl}bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="${appcfg.websiteStaticFileBaseUrl}dist/js/app.min.js" type="text/javascript"></script>
-    <script src="http://cdn.bootcss.com/URI.js/1.11.2/URI.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" type="text/javascript"></script>
     <script src="${appcfg.websiteStaticFileBaseUrl}plugins/daterangepicker/daterangepicker.js"
             type="text/javascript"></script>
@@ -49,7 +48,9 @@
         <section class="content">
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <h3 class="box-title">${appInfo.name} (${appInfo.version})</h3>
+                    <h3 class="box-title">${appInfo.name} (${appInfo.version}) <button type="button" class="btn-xs bg-yellow deleteApp" data="${appInfo.id}">
+                        删除
+                    </button></h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -88,12 +89,15 @@
 
                     <br/>
 
-                    <div id="exceptionchart" style="height:400px"></div>
-                    <div id="logchart" style="height:400px"></div>
+                    <div id="exceptionchart" style="height:400px"> <div class="overlay" id="loadingexceptionchart">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div></div>
 
-                    <%--<div class="overlay">--%>
-                    <%--<i class="fa fa-refresh fa-spin"></i>--%>
-                    <%--</div>--%>
+                    <div id="logchart" style="height:400px"> <div class="overlay" id="loadinglogchart">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div></div>
+
+
                     <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 
                     <script type="text/javascript">
@@ -109,9 +113,30 @@
                                         if (result) {
                                             location.href = location.href;
                                         }
+
                                     },
-                                    error: function (errorMsg) {
-                                        alert(errorMsg);
+                                    error: function () {
+                                        alert("错误！");
+                                    }
+
+                                });
+                            });
+                            $(".deleteApp").click(function () {
+                                var id = $(this).attr("data");
+                                $.ajax({
+                                    type: "delete",
+                                    url: "<%=request.getContextPath()%>/ajax/deleteApp/" + id,
+                                    success: function (result) {
+
+                                        if (result) {
+                                            location.href = '${appcfg.websiteBaseUrl}';
+                                        }
+                                        else {
+                                            alert("删除失败！");
+                                        }
+                                    },
+                                    error: function () {
+                                        alert("错误！");
                                     }
                                 });
                             });
@@ -132,9 +157,9 @@
                                     function (ec) {
 
                                         var logchart = ec.init(document.getElementById('logchart'));
-                                        logchart.showLoading({text: "正在加载数据..."});
+
                                         var exceptionchart = ec.init(document.getElementById('exceptionchart'));
-                                        exceptionchart.showLoading({text: "正在加载数据..."});
+
 
                                         var logoption = {
                                             title: {
@@ -229,11 +254,11 @@
                                                     logoption.xAxis[0].data = result.x;
                                                     logoption.series = result.data;
                                                     logchart.setOption(logoption);
-                                                    logchart.hideLoading();
+                                                    $("#loadinglogchart").hide();
                                                 }
                                             },
-                                            error: function (errorMsg) {
-                                                alert(errorMsg);
+                                            error: function () {
+                                                alert("错误！");
                                             }
                                         });
 
@@ -248,11 +273,11 @@
                                                     exceptionoption.xAxis[0].data = result.x;
                                                     exceptionoption.series = result.data;
                                                     exceptionchart.setOption(exceptionoption);
-                                                    exceptionchart.hideLoading();
+                                                    $("#loadingexceptionchart").hide();
                                                 }
                                             },
-                                            error: function (errorMsg) {
-                                                alert(errorMsg);
+                                            error: function () {
+                                                alert("错误！");
                                             }
                                         });
 

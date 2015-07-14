@@ -1,3 +1,4 @@
+<%@ page import="me.josephzhu.appinfocenter.site.entity.LoginUser" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Left side column. contains the logo and sidebar -->
@@ -8,7 +9,7 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">选择应用程序</li>
+            <li class="header">欢迎您：${sessionScope.loginuser.email}, <span><a href="<%=request.getContextPath()%>/logout">【登出】</a></span></li>
 
 
             <c:forEach var="app" items="${apps}">

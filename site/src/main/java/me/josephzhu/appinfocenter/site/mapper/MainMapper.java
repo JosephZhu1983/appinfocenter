@@ -3,6 +3,7 @@ package me.josephzhu.appinfocenter.site.mapper;
 import me.josephzhu.appinfocenter.common.Log;
 import me.josephzhu.appinfocenter.site.entity.App;
 import me.josephzhu.appinfocenter.site.entity.AppDetail;
+import me.josephzhu.appinfocenter.site.entity.LoginUser;
 import me.josephzhu.appinfocenter.site.entity.Server;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
@@ -18,6 +19,9 @@ import java.util.List;
 @Repository
 public interface MainMapper
 {
+    @Select("select id,email from accounts where email=#{email} and password=#{password} ")
+    LoginUser login(@Param("email")String email, @Param("password")String password);
+
     @Select("select a.id, a.name," +
             "a.version," +
             "SUM(CASE WHEN TIMESTAMPDIFF(MINUTE, b.last_active_time, NOW()) < 1 then 1 else 0 end) as activeServers," +
@@ -58,4 +62,7 @@ public interface MainMapper
 
     @Delete("delete from app_status where id=#{id}")
     int deleteStatus(@Param("id") int statusId);
+
+    @Delete("delete from apps where id=#{id}")
+    int deleteApp(@Param("id") int appId);
 }

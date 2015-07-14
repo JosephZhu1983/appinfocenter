@@ -3,16 +3,20 @@ package me.josephzhu.appinfocenter.site.controller;
 import me.josephzhu.appinfocenter.client.AppInfoCenter;
 import me.josephzhu.appinfocenter.common.Log;
 import me.josephzhu.appinfocenter.site.entity.App;
+import me.josephzhu.appinfocenter.site.entity.LoginUser;
 import me.josephzhu.appinfocenter.site.mapper.MainMapper;
+import me.josephzhu.appinfocenter.site.util.MD5;
 import me.josephzhu.appinfocenter.site.util.PagerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -24,11 +28,15 @@ import java.util.stream.Collectors;
 @Controller
 public class MainController
 {
+    public static String IDKEY ="loginuser";
+
     private static int PAGESIZE = 10;
     @Autowired
     private AppInfoCenter appInfoCenter;
     @Autowired
     private MainMapper mainMapper;
+
+
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public ModelAndView test()
@@ -38,6 +46,49 @@ public class MainController
         appInfoCenter.warning("测试warning日志");
         appInfoCenter.error("测试error日志");
         throw new RuntimeException("测试未处理异常");
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login()
+    {
+        return new ModelAndView("login");
+    }
+
+    @RequestMapping(value="/dologin", method = RequestMethod.POST)
+    public String login(String email, String password, String saveUser,
+                        HttpSession session, HttpServletResponse response) {
+        password = MD5.GetMD5Code(password + "appinfocenter");
+        LoginUser loginUser = mainMapper.login(email, password);
+        if(loginUser != null) {
+            session.setAttribute(IDKEY, loginUser);
+
+            if(saveUser != null && saveUser.equals("saveUser")) {
+                String encode = "";
+                try {
+                    encode = URLEncoder.encode(email + "|" + password, "UTF-8");
+                    Cookie cookie = new Cookie(IDKEY, encode);
+                    cookie.setMaxAge(60 * 60 * 24 * 365);
+                    cookie.setPath("/");
+                    response.addCookie(cookie);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            return "redirect:/";
+        } else {
+            return "redirect:/login?error=true";
+        }
+    }
+
+    @RequestMapping(value="/logout")
+    public String logout(HttpSession session, HttpServletResponse response) {
+        session.removeAttribute(IDKEY);
+        Cookie cookie = new Cookie(IDKEY, "");
+        cookie.setMaxAge(0);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        return "redirect:/";
     }
 
 
@@ -147,6 +198,7 @@ public class MainController
         modelAndView.addObject("currentAppId", appId);
         modelAndView.addObject("apps", apps);
         modelAndView.addObject("section", "exception");
+
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
         if (begin != null)

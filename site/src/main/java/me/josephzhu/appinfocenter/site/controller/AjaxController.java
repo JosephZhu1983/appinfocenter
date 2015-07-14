@@ -33,6 +33,13 @@ public class AjaxController
         return mainMapper.deleteStatus(statusId) == 1;
     }
 
+    @RequestMapping(value = "/deleteApp/{appId}", method = RequestMethod.DELETE)
+    public boolean deleteApp(@PathVariable Integer appId)
+    {
+        return mainMapper.deleteApp(appId) == 1;
+    }
+
+
     @RequestMapping(value = "/logcharts/{appId}", method = RequestMethod.GET)
     public ChartsData logcharts(@PathVariable Integer appId)
     {
@@ -65,6 +72,7 @@ public class AjaxController
 
         Calendar begin = Calendar.getInstance();
         begin.setTime(new Date());
+        begin.set(Calendar.SECOND, 0);
         begin.add(Calendar.DATE, -3);
 
         while (begin.getTime().before(now.getTime()))
@@ -109,6 +117,7 @@ public class AjaxController
 
         Calendar begin = Calendar.getInstance();
         begin.setTime(new Date());
+        begin.set(Calendar.SECOND, 0);
         begin.add(Calendar.DATE, -3);
 
 

@@ -7,7 +7,7 @@
 
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2015 <a href="#">Joseph Zhu</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2015 <a href="mailto:yzhu@live.com">Joseph Zhu</a>.</strong> All rights reserved.
 </footer>
 
 <!-- Add the sidebar's background. This div must be placed
