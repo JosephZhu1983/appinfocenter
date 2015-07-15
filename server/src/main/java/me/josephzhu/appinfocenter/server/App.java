@@ -1,20 +1,41 @@
 package me.josephzhu.appinfocenter.server;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 /**
- * Created by joseph on 15/7/9.
+ * Created by joseph on 15/7/15.
  */
 public class App
 {
-    public static void main(String[] args) throws Exception
+    public int getId()
     {
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        context.getBeansOfType(AbstractSubmitter.class).values().forEach(submitter ->
-        {
-            System.out.println(submitter.getClass().getName());
-            submitter.start();
-        });
+        return id;
     }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getVersion()
+    {
+        return version;
+    }
+
+    public void setVersion(String version)
+    {
+        this.version = version;
+    }
+
+    private int id;
+    private String name;
+    private String version;
 }

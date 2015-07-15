@@ -5,6 +5,66 @@ package me.josephzhu.appinfocenter.server;
  */
 public class Config
 {
+    private int checkInterval;
+    private String triggerLogAlarmLevel;
+    private int triggerLogAlarmPerMin;
+    private int triggerExceptionAlarmPerMin;
+
+    public int getSampleDataCount()
+    {
+        return sampleDataCount;
+    }
+
+    public void setSampleDataCount(int sampleDataCount)
+    {
+        this.sampleDataCount = sampleDataCount;
+    }
+
+    private int sampleDataCount;
+
+    public int getCheckInterval()
+    {
+        return checkInterval;
+    }
+
+    public void setCheckInterval(int checkInterval)
+    {
+        if (checkInterval >= 1000)
+            this.checkInterval = checkInterval;
+        else
+            this.checkInterval = 1000;
+    }
+
+    public String getTriggerLogAlarmLevel()
+    {
+        return triggerLogAlarmLevel;
+    }
+
+    public void setTriggerLogAlarmLevel(String triggerLogAlarmLevel)
+    {
+        this.triggerLogAlarmLevel = triggerLogAlarmLevel;
+    }
+
+    public int getTriggerLogAlarmPerMin()
+    {
+        return triggerLogAlarmPerMin;
+    }
+
+    public void setTriggerLogAlarmPerMin(int triggerLogAlarmPerMin)
+    {
+        this.triggerLogAlarmPerMin = triggerLogAlarmPerMin;
+    }
+
+    public int getTriggerExceptionAlarmPerMin()
+    {
+        return triggerExceptionAlarmPerMin;
+    }
+
+    public void setTriggerExceptionAlarmPerMin(int triggerExceptionAlarmPerMin)
+    {
+        this.triggerExceptionAlarmPerMin = triggerExceptionAlarmPerMin;
+    }
+
     private String redisHost;
     private int redisPort;
 

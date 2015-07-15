@@ -2,10 +2,8 @@ package me.josephzhu.appinfocenter.client;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import me.josephzhu.appinfocenter.common.Entry;
+import me.josephzhu.appinfocenter.common.*;
 import me.josephzhu.appinfocenter.common.Exception;
-import me.josephzhu.appinfocenter.common.Log;
-import me.josephzhu.appinfocenter.common.Status;
 import org.apache.log4j.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;

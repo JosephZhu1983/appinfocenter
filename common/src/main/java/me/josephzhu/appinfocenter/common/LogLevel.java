@@ -1,4 +1,4 @@
-package me.josephzhu.appinfocenter.client;
+package me.josephzhu.appinfocenter.common;
 
 /**
  * Created by joseph on 15/7/10.

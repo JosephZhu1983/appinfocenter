@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : utf-8
 
- Date: 07/14/2015 20:47:01 PM
+ Date: 07/15/2015 15:35:15 PM
 */
 
 SET NAMES utf8;
@@ -25,8 +25,23 @@ CREATE TABLE `accounts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
+  `receivealarm` bit(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `alarmmails`
+-- ----------------------------
+DROP TABLE IF EXISTS `alarmmails`;
+CREATE TABLE `alarmmails` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mailsubject` varchar(200) DEFAULT NULL,
+  `mailbody` mediumtext,
+  `sendtime` datetime DEFAULT NULL,
+  `sendto` varchar(255) DEFAULT NULL,
+  `error` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `app_status`
@@ -38,7 +53,7 @@ CREATE TABLE `app_status` (
   `server_id` int(11) DEFAULT NULL,
   `last_active_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `apps`
@@ -72,7 +87,7 @@ CREATE TABLE `exceptions` (
   KEY `app_id` (`app_id`),
   KEY `context_id` (`context_id`) USING HASH,
   KEY `create_time` (`create_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=3138 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3140 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `logs`
@@ -92,7 +107,7 @@ CREATE TABLE `logs` (
   KEY `level` (`level`),
   KEY `context_id` (`context_id`) USING BTREE,
   KEY `create_time` (`create_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=11442 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11446 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `servers`
@@ -105,7 +120,7 @@ CREATE TABLE `servers` (
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ip` (`ip`,`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Procedure structure for `sp_create_exception`

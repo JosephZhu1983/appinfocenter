@@ -8,7 +8,7 @@ import me.josephzhu.appinfocenter.site.entity.Server;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by joseph on 15/7/11.
  */
-@Repository
+@Component
 public interface MainMapper
 {
     @Select("select id,email from accounts where email=#{email} and password=#{password} ")
