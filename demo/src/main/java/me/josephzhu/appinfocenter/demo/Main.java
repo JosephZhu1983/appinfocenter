@@ -5,6 +5,8 @@ import me.josephzhu.appinfocenter.client.StatusCallback;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -29,13 +31,17 @@ public class Main implements StatusCallback
 
     public static void test(AppInfoCenter appInfoCenter)
     {
+        Map<String, Object> extraInfo = new HashMap<>();
+        extraInfo.put("ThreadId", Thread.currentThread().getId());
+        extraInfo.put("ThreadName", Thread.currentThread().getName());
+
         for (int i = 0; i < 2; i++)
         {
-            appInfoCenter.debug("11debug消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息" + i);
-            appInfoCenter.info("11info消息" + i);
-            appInfoCenter.warning("11warning消息" + i);
-            appInfoCenter.error("11error消息" + i);
-            appInfoCenter.exception(new NullPointerException("11异常信息" + i));
+            appInfoCenter.debug("11debug消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息一条比较长的消息" + i,extraInfo);
+            appInfoCenter.info("11info消息" + i,extraInfo);
+            appInfoCenter.warning("11warning消息" + i,extraInfo);
+            appInfoCenter.error("11error消息" + i,extraInfo);
+            appInfoCenter.exception(new NullPointerException("11异常信息" + i),extraInfo);
             gotexception();
         }
 

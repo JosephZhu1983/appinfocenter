@@ -1,7 +1,6 @@
 package me.josephzhu.appinfocenter.server;
 
 import me.josephzhu.appinfocenter.common.Entry;
-import me.josephzhu.appinfocenter.common.LogLevel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

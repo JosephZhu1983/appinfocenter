@@ -1,12 +1,25 @@
 package me.josephzhu.appinfocenter.common;
 
 import java.util.Date;
+import java.util.Map;
 
 /**
  * Created by joseph on 15/7/10.
  */
 public abstract class Entry
 {
+    public String getExtraInfo()
+    {
+        return extraInfo;
+    }
+
+    public void setExtraInfo(String extraInfo)
+    {
+        this.extraInfo = extraInfo;
+    }
+
+    private String extraInfo;
+
     protected String channelName;
     private int id;
     private String appName;

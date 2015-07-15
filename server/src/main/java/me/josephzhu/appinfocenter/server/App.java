@@ -5,6 +5,10 @@ package me.josephzhu.appinfocenter.server;
  */
 public class App
 {
+    private int id;
+    private String name;
+    private String version;
+
     public int getId()
     {
         return id;
@@ -34,8 +38,4 @@ public class App
     {
         this.version = version;
     }
-
-    private int id;
-    private String name;
-    private String version;
 }

@@ -37,7 +37,7 @@ public class LogSubmitter extends AbstractSubmitter
                     log.getServerName(),
                     log.getServerIp(),
                     log.getAppName(),
-                    log.getAppVersion()) == 1)
+                    log.getAppVersion(), log.getExtraInfo()) == 1)
                 logger.warn("保存" + message + "失败");
         }
         catch (Exception ex)

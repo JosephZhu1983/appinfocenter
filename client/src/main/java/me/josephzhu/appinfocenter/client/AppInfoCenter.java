@@ -13,6 +13,7 @@ import java.io.StringWriter;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -139,7 +140,7 @@ public class AppInfoCenter
         if (healthy)
         {
             Status status = new Status();
-            initEntry(status);
+            initEntry(status, null);
             status.setHealthy(healthy);
 
             publish(status);
@@ -190,7 +191,7 @@ public class AppInfoCenter
         }
     }
 
-    private void initEntry(Entry entry)
+    private void initEntry(Entry entry, Map<String, Object> extraInfo)
     {
         if (contextId.get() == null)
             contextId.set(UUID.randomUUID());
@@ -201,15 +202,37 @@ public class AppInfoCenter
         entry.setServerName(hostName);
         entry.setAppName(appName);
         entry.setAppVersion(appVersion);
+        if (extraInfo == null)
+        {
+            entry.setExtraInfo("");
+        }
+        else
+        {
+            ObjectMapper mapper = new ObjectMapper();
+            try
+            {
+
+                entry.setExtraInfo(mapper.writeValueAsString(extraInfo));
+            }
+            catch (java.lang.Exception ex)
+            {
+                ex.printStackTrace();
+            }
+        }
     }
 
     public void log(LogLevel level, String message)
+    {
+        log(level, message, null);
+    }
+
+    public void log(LogLevel level, String message, Map<String, Object> extraInfo)
     {
         LogLevel submitLevel = Enum.valueOf(LogLevel.class, logLevel);
         if (submitLevel.getValue() <= level.getValue())
         {
             Log log = new Log();
-            initEntry(log);
+            initEntry(log, extraInfo);
 
             log.setLevel(level.getValue());
             log.setMessage(message);
@@ -223,8 +246,13 @@ public class AppInfoCenter
 
     public void exception(Throwable ex)
     {
+        exception(ex, null);
+    }
+
+    public void exception(Throwable ex, Map<String, Object> extraInfo)
+    {
         Exception exception = new Exception();
-        initEntry(exception);
+        initEntry(exception ,extraInfo);
 
         exception.setMessage(ex.getMessage());
         StringWriter sw = new StringWriter();
@@ -255,5 +283,26 @@ public class AppInfoCenter
     {
         log(LogLevel.Error, message);
     }
+
+    public void debug(String message, Map<String, Object> extraInfo)
+    {
+        log(LogLevel.Debug, message, extraInfo);
+    }
+
+    public void info(String message, Map<String, Object> extraInfo)
+    {
+        log(LogLevel.Info, message, extraInfo);
+    }
+
+    public void warning(String message, Map<String, Object> extraInfo)
+    {
+        log(LogLevel.Warning, message, extraInfo);
+    }
+
+    public void error(String message, Map<String, Object> extraInfo)
+    {
+        log(LogLevel.Error, message, extraInfo);
+    }
+
 
 }

@@ -9,7 +9,10 @@ import me.josephzhu.appinfocenter.site.util.MD5;
 import me.josephzhu.appinfocenter.site.util.PagerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
@@ -28,14 +31,13 @@ import java.util.stream.Collectors;
 @Controller
 public class MainController
 {
-    public static String IDKEY ="loginuser";
+    public static String IDKEY = "loginuser";
 
     private static int PAGESIZE = 10;
     @Autowired
     private AppInfoCenter appInfoCenter;
     @Autowired
     private MainMapper mainMapper;
-
 
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
@@ -54,35 +56,43 @@ public class MainController
         return new ModelAndView("login");
     }
 
-    @RequestMapping(value="/dologin", method = RequestMethod.POST)
+    @RequestMapping(value = "/dologin", method = RequestMethod.POST)
     public String login(String email, String password, String saveUser,
-                        HttpSession session, HttpServletResponse response) {
+                        HttpSession session, HttpServletResponse response)
+    {
         password = MD5.GetMD5Code(password + "appinfocenter");
         LoginUser loginUser = mainMapper.login(email, password);
-        if(loginUser != null) {
+        if (loginUser != null)
+        {
             session.setAttribute(IDKEY, loginUser);
 
-            if(saveUser != null && saveUser.equals("saveUser")) {
+            if (saveUser != null && saveUser.equals("saveUser"))
+            {
                 String encode = "";
-                try {
+                try
+                {
                     encode = URLEncoder.encode(email + "|" + password, "UTF-8");
                     Cookie cookie = new Cookie(IDKEY, encode);
                     cookie.setMaxAge(60 * 60 * 24 * 365);
                     cookie.setPath("/");
                     response.addCookie(cookie);
-                } catch (UnsupportedEncodingException e) {
+                }
+                catch (UnsupportedEncodingException e)
+                {
                     e.printStackTrace();
                 }
             }
 
             return "redirect:/";
-        } else {
+        } else
+        {
             return "redirect:/login?error=true";
         }
     }
 
-    @RequestMapping(value="/logout")
-    public String logout(HttpSession session, HttpServletResponse response) {
+    @RequestMapping(value = "/logout")
+    public String logout(HttpSession session, HttpServletResponse response)
+    {
         session.removeAttribute(IDKEY);
         Cookie cookie = new Cookie(IDKEY, "");
         cookie.setMaxAge(0);

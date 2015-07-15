@@ -9,6 +9,9 @@ public class Config
     private String triggerLogAlarmLevel;
     private int triggerLogAlarmPerMin;
     private int triggerExceptionAlarmPerMin;
+    private int sampleDataCount;
+    private String redisHost;
+    private int redisPort;
 
     public int getSampleDataCount()
     {
@@ -19,8 +22,6 @@ public class Config
     {
         this.sampleDataCount = sampleDataCount;
     }
-
-    private int sampleDataCount;
 
     public int getCheckInterval()
     {
@@ -64,9 +65,6 @@ public class Config
     {
         this.triggerExceptionAlarmPerMin = triggerExceptionAlarmPerMin;
     }
-
-    private String redisHost;
-    private int redisPort;
 
     public String getRedisHost()
     {

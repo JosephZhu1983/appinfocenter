@@ -20,7 +20,7 @@ import java.util.List;
 public interface MainMapper
 {
     @Select("select id,email from accounts where email=#{email} and password=#{password} ")
-    LoginUser login(@Param("email")String email, @Param("password")String password);
+    LoginUser login(@Param("email") String email, @Param("password") String password);
 
     @Select("select a.id, a.name," +
             "a.version," +

@@ -1,6 +1,5 @@
 package me.josephzhu.appinfocenter.server;
 
-import me.josephzhu.appinfocenter.common.Entry;
 import org.apache.log4j.Logger;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,35 +11,37 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class EmailService
 {
     private Logger logger = Logger.getLogger(EmailService.class);
 
-	@Autowired
-	private JavaMailSender mailSender;
-	
-	@Autowired
-	private DbMapper dbMapper;
-	
-	@Autowired
-	private VelocityEngine velocityEngine;
+    @Autowired
+    private JavaMailSender mailSender;
 
-	
-	public void sendAlarmMail(String email, String condition, String data)
+    @Autowired
+    private DbMapper dbMapper;
+
+    @Autowired
+    private VelocityEngine velocityEngine;
+
+
+    public void sendAlarmMail(String email, String condition, String data)
     {
 
-		Map<String, Object> model = new HashMap<>();
-        model.put("condition",condition);
-        model.put("data",data);
-		String text = VelocityEngineUtils.mergeTemplateIntoString(
+        Map<String, Object> model = new HashMap<>();
+        model.put("condition", condition);
+        model.put("data", data);
+        String text = VelocityEngineUtils.mergeTemplateIntoString(
                 velocityEngine, "alarmmail.vm", "UTF-8", model);
         logger.debug(text);
 
-		MimeMessage message = mailSender.createMimeMessage();
-		MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
         String subject = "*应用程序信息中心报警* " + condition;
         try
         {
@@ -55,7 +56,7 @@ public class EmailService
             return;
         }
 
-        String error="";
+        String error = "";
         try
         {
             mailSender.send(message);

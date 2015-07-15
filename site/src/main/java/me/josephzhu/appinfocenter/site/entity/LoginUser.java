@@ -2,11 +2,13 @@ package me.josephzhu.appinfocenter.site.entity;
 
 import java.io.Serializable;
 
-public class LoginUser implements Serializable {
+public class LoginUser implements Serializable
+{
 
     private static final long serialVersionUID = -4006794753824335207L;
 
-    private int               id;
+    private int id;
+    private String email;
 
     public String getEmail()
     {
@@ -18,13 +20,13 @@ public class LoginUser implements Serializable {
         this.email = email;
     }
 
-    private String            email;
-
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 

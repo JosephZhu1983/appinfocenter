@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : utf-8
 
- Date: 07/15/2015 15:35:15 PM
+ Date: 07/15/2015 21:07:25 PM
 */
 
 SET NAMES utf8;
@@ -41,7 +41,7 @@ CREATE TABLE `alarmmails` (
   `sendto` varchar(255) DEFAULT NULL,
   `error` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `app_status`
@@ -53,7 +53,7 @@ CREATE TABLE `app_status` (
   `server_id` int(11) DEFAULT NULL,
   `last_active_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `apps`
@@ -81,13 +81,14 @@ CREATE TABLE `exceptions` (
   `server_id` int(11) DEFAULT NULL,
   `app_id` int(11) DEFAULT NULL,
   `context_id` varchar(50) DEFAULT NULL,
+  `extrainfo` text,
   PRIMARY KEY (`id`),
   KEY `type` (`type`),
   KEY `server_id` (`server_id`),
   KEY `app_id` (`app_id`),
   KEY `context_id` (`context_id`) USING HASH,
   KEY `create_time` (`create_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=3140 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3151 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `logs`
@@ -101,13 +102,14 @@ CREATE TABLE `logs` (
   `server_id` int(11) DEFAULT NULL,
   `app_id` int(11) DEFAULT NULL,
   `context_id` varchar(50) DEFAULT NULL,
+  `extrainfo` text,
   PRIMARY KEY (`id`),
   KEY `server_id` (`server_id`),
   KEY `app_id` (`app_id`),
   KEY `level` (`level`),
   KEY `context_id` (`context_id`) USING BTREE,
   KEY `create_time` (`create_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=11446 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11464 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `servers`
@@ -136,7 +138,8 @@ IN p_context_id varchar(50),
 IN p_server_name varchar(255),
 IN p_server_ip varchar(255),
 IN p_app_name varchar(255),
-IN p_app_version varchar(255)
+IN p_app_version varchar(255),
+IN p_extrainfo text
 )
 BEGIN  
 DECLARE v_server_id INT DEFAULT 0;
@@ -159,8 +162,8 @@ IF v_server_id=0 THEN
 	SELECT LAST_INSERT_ID() INTO v_server_id;
 END IF;
 
-INSERT INTO exceptions (`server_id`, `app_id`, `type`, `message`, `stacktrace`, `context_id`, `create_time`) 
-VALUES (v_server_id, v_app_id, p_type, p_message, p_stacktrace, p_context_id, p_create_time);
+INSERT INTO exceptions (`server_id`, `app_id`, `type`, `message`, `stacktrace`, `context_id`, `create_time`, `extrainfo`) 
+VALUES (v_server_id, v_app_id, p_type, p_message, p_stacktrace, p_context_id, p_create_time, p_extrainfo);
 
 IF v_error = 1 THEN
 	ROLLBACK;
@@ -187,7 +190,8 @@ IN p_context_id varchar(50),
 IN p_server_name varchar(255),
 IN p_server_ip varchar(255),
 IN p_app_name varchar(255),
-IN p_app_version varchar(255)
+IN p_app_version varchar(255),
+IN p_extrainfo text
 )
 BEGIN  
 DECLARE v_server_id INT DEFAULT 0;
@@ -210,8 +214,8 @@ IF v_server_id=0 THEN
 	SELECT LAST_INSERT_ID() INTO v_server_id;
 END IF;
 
-INSERT INTO logs (`server_id`, `app_id`, `level`, `message`, `context_id`, `create_time`) 
-VALUES (v_server_id, v_app_id, p_level, p_message, p_context_id, p_create_time);
+INSERT INTO logs (`server_id`, `app_id`, `level`, `message`, `context_id`, `create_time`, `extrainfo`) 
+VALUES (v_server_id, v_app_id, p_level, p_message, p_context_id, p_create_time, p_extrainfo);
 
 IF v_error = 1 THEN
 	ROLLBACK;

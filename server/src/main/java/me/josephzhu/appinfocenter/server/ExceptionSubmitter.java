@@ -39,7 +39,7 @@ public class ExceptionSubmitter extends AbstractSubmitter
                     exception.getServerName(),
                     exception.getServerIp(),
                     exception.getAppName(),
-                    exception.getAppVersion()) == 1)
+                    exception.getAppVersion(), exception.getExtraInfo()) == 1)
                 logger.warn("保存" + message + "失败");
         }
         catch (java.lang.Exception ex)

@@ -53,7 +53,7 @@ public abstract class AbstractAlarmer extends Thread
     private void check()
     {
 
-        for(App app : dbMapper.getApps())
+        for (App app : dbMapper.getApps())
         {
             List<Entry> data = new ArrayList<>();
             String condition = matchCondition(data, app);
