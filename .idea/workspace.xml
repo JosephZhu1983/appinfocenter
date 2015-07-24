@@ -1,45 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cd6f463-3323-4778-a4e5-a64b9eb097ad" name="Default" comment="fix some bugs or something like that!">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/fonts/FontAwesome.otf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/fonts/fontawesome-webfont.eot" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/fonts/fontawesome-webfont.ttf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/fonts/fontawesome-webfont.woff2" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/fonts/fontawesome-webfont.woff" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/main/java/me/josephzhu/appinfocenter/client/DumpFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common/src/main/java/me/josephzhu/appinfocenter/common/HttpLog.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/main/java/me/josephzhu/appinfocenter/server/HttpLogSubmitter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_1_3_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/_animated.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/_bordered-pulled.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/_core.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/_fixed-width.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/_icons.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/_larger.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/_list.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/_mixins.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/_path.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/_rotated-flipped.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/_stacked.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/_variables.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/animated.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/bordered-pulled.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/core.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/fixed-width.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/css/font-awesome.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/font-awesome.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/css/font-awesome.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/scss/font-awesome.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/fonts/fontawesome-webfont.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/icons.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/larger.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/list.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/mixins.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/path.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/rotated-flipped.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/stacked.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/site/src/main/webapp/static/font-awesome-4.3.0/less/variables.less" />
+    <list default="true" id="4cd6f463-3323-4778-a4e5-a64b9eb097ad" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/me/josephzhu/appinfocenter/server/AbstractSubmitter$1.class" afterPath="$PROJECT_DIR$/server/target/classes/me/josephzhu/appinfocenter/server/AbstractSubmitter$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/me/josephzhu/appinfocenter/server/AbstractSubmitter.class" afterPath="$PROJECT_DIR$/server/target/classes/me/josephzhu/appinfocenter/server/AbstractSubmitter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/me/josephzhu/appinfocenter/server/App.class" afterPath="$PROJECT_DIR$/server/target/classes/me/josephzhu/appinfocenter/server/App.class" />
@@ -64,33 +26,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/util/TagUtil.class" afterPath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/util/TagUtil.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/appinfocenter.client-0.1.jar" afterPath="$PROJECT_DIR$/client/target/appinfocenter.client-0.1.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/appinfocenter.common-0.1.jar" afterPath="$PROJECT_DIR$/common/target/appinfocenter.common-0.1.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/controller/AjaxController.java" afterPath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/controller/AjaxController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/me/josephzhu/appinfocenter/client/AppInfoCenter.java" afterPath="$PROJECT_DIR$/client/src/main/java/me/josephzhu/appinfocenter/client/AppInfoCenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/me/josephzhu/appinfocenter/server/DbMapper.java" afterPath="$PROJECT_DIR$/server/src/main/java/me/josephzhu/appinfocenter/server/DbMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/me/josephzhu/appinfocenter/client/ExceptionResolver.java" afterPath="$PROJECT_DIR$/client/src/main/java/me/josephzhu/appinfocenter/client/ExceptionResolver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/main/java/me/josephzhu/appinfocenter/server/Main.java" afterPath="$PROJECT_DIR$/server/src/main/java/me/josephzhu/appinfocenter/server/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/controller/MainController.java" afterPath="$PROJECT_DIR$/site/src/main/java/me/josephzhu/appinfocenter/site/controller/MainController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/mapper/MainMapper.xml" afterPath="$PROJECT_DIR$/site/target/classes/me/josephzhu/appinfocenter/site/mapper/MainMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/appinfocenter.sql" afterPath="$PROJECT_DIR$/doc/appinfocenter.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/target/classes/applicationContext.xml" afterPath="$PROJECT_DIR$/server/target/classes/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/resources/applicationContext.xml" afterPath="$PROJECT_DIR$/site/src/main/resources/applicationContext.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/target/classes/applicationContext.xml" afterPath="$PROJECT_DIR$/site/target/classes/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/client.iml" afterPath="$PROJECT_DIR$/client/client.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/demo.iml" afterPath="$PROJECT_DIR$/demo/demo.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/exception.jsp" afterPath="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/exception.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/index.jsp" afterPath="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/log.jsp" afterPath="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/log.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/client/target/maven-archiver/pom.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/common/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pom.xml" afterPath="$PROJECT_DIR$/client/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/pom.xml" afterPath="$PROJECT_DIR$/server/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/pom.xml" afterPath="$PROJECT_DIR$/site/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/site.iml" afterPath="$PROJECT_DIR$/site/site.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/resources/springmvc.xml" afterPath="$PROJECT_DIR$/site/src/main/resources/springmvc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/status.jsp" afterPath="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/page/status.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="appinfocenter.iws" />
@@ -904,7 +844,7 @@
       <workItem from="1437480325904" duration="4168000" />
       <workItem from="1437529302269" duration="1280000" />
       <workItem from="1437616436392" duration="598000" />
-      <workItem from="1437705686661" duration="5849000" />
+      <workItem from="1437705686661" duration="5880000" />
     </task>
     <task id="LOCAL-00001" summary="格式化">
       <created>1436715249035</created>
@@ -990,11 +930,17 @@
       <option name="project" value="LOCAL" />
       <updated>1436965654661</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fix some bugs or something like that!">
+      <created>1437712876834</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1437712876834</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185791000" />
+    <option name="totallyTimeSpent" value="185822000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
