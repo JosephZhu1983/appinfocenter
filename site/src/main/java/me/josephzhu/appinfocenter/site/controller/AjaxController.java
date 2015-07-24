@@ -49,22 +49,22 @@ public class AjaxController
         Series debug = new Series();
         debug.setName("Debug");
         debug.setType("line");
-        debug.setData(new ArrayList<>());
+        debug.setData(new ArrayList<Integer>());
         data.add(debug);
         Series info = new Series();
         info.setName("Info");
         info.setType("line");
-        info.setData(new ArrayList<>());
+        info.setData(new ArrayList<Integer>());
         data.add(info);
         Series warning = new Series();
         warning.setName("Warning");
         warning.setType("line");
-        warning.setData(new ArrayList<>());
+        warning.setData(new ArrayList<Integer>());
         data.add(warning);
         Series error = new Series();
         error.setName("Error");
         error.setType("line");
-        error.setData(new ArrayList<>());
+        error.setData(new ArrayList<Integer>());
         data.add(error);
         Calendar now = Calendar.getInstance();
         now.setTime(new Date());
@@ -108,7 +108,7 @@ public class AjaxController
         Series exception = new Series();
         exception.setName("Exception");
         exception.setType("line");
-        exception.setData(new ArrayList<>());
+        exception.setData(new ArrayList<Integer>());
         data.add(exception);
 
         Calendar now = Calendar.getInstance();

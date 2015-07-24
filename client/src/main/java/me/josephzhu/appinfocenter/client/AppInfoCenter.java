@@ -68,54 +68,63 @@ public class AppInfoCenter
 
         logger.debug(String.format("hostip:%s,hostname:%s,appname:%s,appversion:%s,queuesize:%s,loglevel:%s", hostIp, hostName, appName, appVersion, queueSize, logLevel));
 
-        backgroundDataSubmitter = new Thread(() ->
+        backgroundDataSubmitter = new Thread(new Runnable()
         {
-            while (true)
+            @Override
+            public void run()
             {
-                try
-                {
-                    submitData();
-                }
-                catch (java.lang.Exception ex)
-                {
-                    ex.printStackTrace();
-                }
-                finally
+                while (true)
                 {
                     try
                     {
-                        Thread.sleep(10);
+                        submitData();
                     }
-                    catch (InterruptedException e)
+                    catch (java.lang.Exception ex)
                     {
+                        ex.printStackTrace();
+                    }
+                    finally
+                    {
+                        try
+                        {
+                            Thread.sleep(10);
+                        }
+                        catch (InterruptedException e)
+                        {
 
+                        }
                     }
                 }
             }
         });
+
         backgroundDataSubmitter.start();
 
-        backgroundStatusSubmitter = new Thread(() ->
+        backgroundStatusSubmitter = new Thread(new Runnable()
         {
-            while (true)
+            @Override
+            public void run()
             {
-                try
-                {
-                    updateStatus();
-                }
-                catch (java.lang.Exception ex)
-                {
-                    ex.printStackTrace();
-                }
-                finally
+                while (true)
                 {
                     try
                     {
-                        Thread.sleep(10 * 1000);
+                        updateStatus();
                     }
-                    catch (InterruptedException e)
+                    catch (java.lang.Exception ex)
                     {
+                        ex.printStackTrace();
+                    }
+                    finally
+                    {
+                        try
+                        {
+                            Thread.sleep(10 * 1000);
+                        }
+                        catch (InterruptedException e)
+                        {
 
+                        }
                     }
                 }
             }
@@ -228,19 +237,26 @@ public class AppInfoCenter
 
     public void log(LogLevel level, String message, Map<String, Object> extraInfo)
     {
-        LogLevel submitLevel = Enum.valueOf(LogLevel.class, logLevel);
-        if (submitLevel.getValue() <= level.getValue())
+        try
         {
-            Log log = new Log();
-            initEntry(log, extraInfo);
+            LogLevel submitLevel = Enum.valueOf(LogLevel.class, logLevel);
+            if (submitLevel.getValue() <= level.getValue())
+            {
+                Log log = new Log();
+                initEntry(log, extraInfo);
 
-            log.setLevel(level.getValue());
-            log.setMessage(message);
+                log.setLevel(level.getValue());
+                log.setMessage(message);
 
-            data.offer(log);
-        } else
+                data.offer(log);
+            } else
+            {
+                logger.info(String.format("配置的记录级别为 %s，舍弃日志 %s - %s", submitLevel, level, message));
+            }
+        }
+        catch (java.lang.Exception ex)
         {
-            logger.info(String.format("配置的记录级别为 %s，舍弃日志 %s - %s", submitLevel, level, message));
+            logger.warn("appinfocenter:" + ex.toString());
         }
     }
 
@@ -251,17 +267,41 @@ public class AppInfoCenter
 
     public void exception(Throwable ex, Map<String, Object> extraInfo)
     {
-        Exception exception = new Exception();
-        initEntry(exception ,extraInfo);
+        try
+        {
+            Exception exception = new Exception();
+            initEntry(exception, extraInfo);
 
-        exception.setMessage(ex.getMessage());
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        ex.printStackTrace(pw);
-        exception.setStackTrace(sw.toString());
-        exception.setType(ex.getClass().getName());
+            exception.setMessage(ex.getMessage());
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            ex.printStackTrace(pw);
+            exception.setStackTrace(sw.toString());
+            exception.setType(ex.getClass().getName());
 
-        data.offer(exception);
+            data.offer(exception);
+        }
+        catch (java.lang.Exception e)
+        {
+            logger.warn("appinfocenter:" + e.toString());
+        }
+    }
+
+    public void httplog(String request, String response)
+    {
+        try
+        {
+            HttpLog log = new HttpLog();
+            initEntry(log,null);
+            log.setRequest(request);
+            log.setResponse(response);
+            data.offer(log);
+        }
+        catch (java.lang.Exception e)
+        {
+            logger.warn("appinfocenter:" + e.toString());
+        }
+
     }
 
     public void debug(String message)

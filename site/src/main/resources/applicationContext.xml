@@ -63,6 +63,7 @@
         <constructor-arg name="redisPort" value="${redis.port}"/>
         <constructor-arg name="logLevel" value="${log.level}"/>
     </bean>
+    <bean class="me.josephzhu.appinfocenter.client.DumpFilter"/>
 
 
 </beans>

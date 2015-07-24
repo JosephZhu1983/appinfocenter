@@ -54,11 +54,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="client" target="1.8" />
+      <module name="client" target="1.7" />
       <module name="common" target="1.5" />
       <module name="demo" target="1.8" />
-      <module name="server" target="1.8" />
-      <module name="site" target="1.8" />
+      <module name="server" target="1.7" />
+      <module name="site" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

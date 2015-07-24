@@ -16,7 +16,8 @@ public class ExceptionResolver implements HandlerExceptionResolver
 {
 
     @Autowired
-    AppInfoCenter appInfoCenter;
+    public AppInfoCenter appInfoCenter;
+
     private Logger logger = Logger.getLogger(ExceptionResolver.class);
 
     @Override

@@ -18,6 +18,7 @@
     </context:component-scan>
 
     <bean id="exceptionResolver" class="me.josephzhu.appinfocenter.client.ExceptionResolver"/>
+    <bean id="dumpFilter" class="me.josephzhu.appinfocenter.client.DumpFilter"/>
 
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/page/"/>

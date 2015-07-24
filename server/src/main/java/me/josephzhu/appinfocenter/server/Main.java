@@ -11,15 +11,16 @@ public class Main
     public static void main(String[] args) throws Exception
     {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-        context.getBeansOfType(AbstractSubmitter.class).values().forEach(submitter ->
+        for(AbstractSubmitter submitter : context.getBeansOfType(AbstractSubmitter.class).values())
         {
             System.out.println(submitter.getClass().getName());
             submitter.start();
-        });
-        context.getBeansOfType(AbstractAlarmer.class).values().forEach(alarmer ->
+        }
+
+        for(AbstractAlarmer alarmer : context.getBeansOfType(AbstractAlarmer.class).values())
         {
             System.out.println(alarmer.getClass().getName());
             alarmer.start();
-        });
+        }
     }
 }

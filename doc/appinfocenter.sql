@@ -11,7 +11,7 @@
  Target Server Version : 50624
  File Encoding         : utf-8
 
- Date: 07/15/2015 21:07:25 PM
+ Date: 07/24/2015 11:48:33 AM
 */
 
 SET NAMES utf8;
@@ -41,7 +41,7 @@ CREATE TABLE `alarmmails` (
   `sendto` varchar(255) DEFAULT NULL,
   `error` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `app_status`
@@ -53,7 +53,7 @@ CREATE TABLE `app_status` (
   `server_id` int(11) DEFAULT NULL,
   `last_active_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `apps`
@@ -66,7 +66,7 @@ CREATE TABLE `apps` (
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`,`version`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `exceptions`
@@ -88,7 +88,21 @@ CREATE TABLE `exceptions` (
   KEY `app_id` (`app_id`),
   KEY `context_id` (`context_id`) USING HASH,
   KEY `create_time` (`create_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=3151 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3152 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `httplogs`
+-- ----------------------------
+DROP TABLE IF EXISTS `httplogs`;
+CREATE TABLE `httplogs` (
+  `id` int(11) NOT NULL,
+  `request` text,
+  `response` text,
+  `create_time` time DEFAULT NULL,
+  `server_id` int(11) DEFAULT NULL,
+  `app_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `logs`
@@ -109,7 +123,7 @@ CREATE TABLE `logs` (
   KEY `level` (`level`),
   KEY `context_id` (`context_id`) USING BTREE,
   KEY `create_time` (`create_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=11464 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11466 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Table structure for `servers`
@@ -122,7 +136,7 @@ CREATE TABLE `servers` (
   `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ip` (`ip`,`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Procedure structure for `sp_create_exception`
@@ -164,6 +178,56 @@ END IF;
 
 INSERT INTO exceptions (`server_id`, `app_id`, `type`, `message`, `stacktrace`, `context_id`, `create_time`, `extrainfo`) 
 VALUES (v_server_id, v_app_id, p_type, p_message, p_stacktrace, p_context_id, p_create_time, p_extrainfo);
+
+IF v_error = 1 THEN
+	ROLLBACK;
+ELSE
+	COMMIT;
+END IF;
+
+SELECT LAST_INSERT_ID();
+
+END
+ ;;
+delimiter ;
+
+-- ----------------------------
+--  Procedure structure for `sp_create_httplog`
+-- ----------------------------
+DROP PROCEDURE IF EXISTS `sp_create_httplog`;
+delimiter ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_create_httplog`(
+IN p_create_time datetime,
+IN p_server_name varchar(255),
+IN p_server_ip varchar(255),
+IN p_app_name varchar(255),
+IN p_app_version varchar(255),
+IN p_request text,
+IN p_resposne text
+)
+BEGIN  
+DECLARE v_server_id INT DEFAULT 0;
+DECLARE v_app_id INT DEFAULT 0;
+DECLARE v_error INTEGER DEFAULT 0;  
+
+DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET v_error=1;  
+
+START TRANSACTION;  
+
+SELECT id INTO v_app_id FROM apps WHERE `name` = p_app_name and `version` = p_app_version;
+IF v_app_id=0 THEN
+	INSERT INTO apps (`name`, `version`, `create_time`) VALUES (p_app_name, p_app_version, p_create_time);
+	SELECT LAST_INSERT_ID() INTO v_app_id;
+END IF;
+
+SELECT id INTO v_server_id FROM servers WHERE `name` = p_server_name and `ip` = p_server_ip;
+IF v_server_id=0 THEN
+	INSERT INTO servers (`name`, `ip`, `create_time`) VALUES (p_server_name, p_server_ip, p_create_time);
+	SELECT LAST_INSERT_ID() INTO v_server_id;
+END IF;
+
+INSERT INTO logs (`server_id`, `app_id`, `request`, `response`, `create_time`) 
+VALUES (v_server_id, v_app_id, p_request, p_response, p_create_time);
 
 IF v_error = 1 THEN
 	ROLLBACK;

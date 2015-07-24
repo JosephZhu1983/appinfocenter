@@ -48,7 +48,7 @@
         <property name="host" value="smtp.stackselect.com" />
         <property name="port" value="587" />
         <property name="username" value="zhuye@stackselect.com" />
-        <property name="password" value="Abcd12345" />
+        <property name="password" value="" />
     </bean>
     <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
         <property name="velocityProperties">

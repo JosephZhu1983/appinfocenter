@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -116,10 +117,14 @@ public class MainController
         ModelAndView modelAndView = new ModelAndView("status");
 
         List<App> apps = mainMapper.getApps();
-        List<App> current = apps.stream()
-                .filter(item -> item.getId()
-                        .equals(appId.toString()))
-                .collect(Collectors.toList());
+        List<App> current = new ArrayList<>();
+
+        for(App app : apps)
+        {
+            if (app.getId().equals(appId.toString()))
+                current.add(app);
+        }
+
         if (current.size() > 0)
             modelAndView.addObject("appInfo", current.get(0));
         modelAndView.addObject("currentAppId", appId);
