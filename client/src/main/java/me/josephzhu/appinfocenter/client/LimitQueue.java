@@ -25,7 +25,7 @@ public class LimitQueue<E> implements Queue<E>
     {
         synchronized (queue)
         {
-            if (queue.size() < limit)
+            if (queue.size() > limit)
             {
                 queue.poll();
             }

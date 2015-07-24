@@ -44,8 +44,6 @@ public class Main implements StatusCallback
             appInfoCenter.exception(new NullPointerException("11异常信息" + i),extraInfo);
             gotexception();
         }
-
-        throw new RuntimeException("11这是一个未处理异常");
     }
 
     private static void gotexception()
