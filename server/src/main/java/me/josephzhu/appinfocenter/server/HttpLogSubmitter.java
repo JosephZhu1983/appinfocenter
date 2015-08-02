@@ -30,14 +30,15 @@ public class HttpLogSubmitter extends AbstractSubmitter
         try
         {
             HttpLog log = mapper.readValue(message, HttpLog.class);
-            if (dbMapper.createHttpLog(
+            int error = dbMapper.createHttpLog(
                     log.getRequest(),
                     log.getResponse(),
                     log.getTime(),
                     log.getServerName(),
                     log.getServerIp(),
                     log.getAppName(),
-                    log.getAppVersion()) == 1)
+                    log.getAppVersion());
+            if (error == 1)
                 logger.warn("保存" + message + "失败");
         }
         catch (Exception ex)
