@@ -30,7 +30,7 @@ public class EmailService
     private VelocityEngine velocityEngine;
 
 
-    public void sendAlarmMail(String email, String condition, String data)
+    public void sendAlarmMail(String env, String email, String condition, String data)
     {
 
         Map<String, Object> model = new HashMap<>();
@@ -42,10 +42,10 @@ public class EmailService
 
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
-        String subject = "*应用程序信息中心报警* " + condition;
+        String subject = "*应用程序信息中心报警* " + env  + condition;
         try
         {
-            helper.setFrom("appinfocenter <zhuye@stackselect.com>");
+            helper.setFrom("appinfocenter <wanglei@yamichu.com>");
             helper.setTo(email);
             helper.setSubject(subject);
             helper.setText(text, true);

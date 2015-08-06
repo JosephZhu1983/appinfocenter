@@ -26,6 +26,12 @@
                 <build.profile.id>prod</build.profile.id>
             </properties>
         </profile>
+        <profile>
+            <id>stage</id>
+            <properties>
+                <build.profile.id>stage</build.profile.id>
+            </properties>
+        </profile>
     </profiles>
 
     <build>

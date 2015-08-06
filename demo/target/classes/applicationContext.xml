@@ -17,8 +17,8 @@
         <constructor-arg name="queueSize" value="10000"/>
         <constructor-arg name="appName" value="${app.name}"/>
         <constructor-arg name="appVersion" value="${app.version}"/>
-        <constructor-arg name="redisHost" value="localhost"/>
+        <constructor-arg name="redisHost" value="115.28.38.232"/>
         <constructor-arg name="redisPort" value="6379"/>
-        <constructor-arg name="logLevel" value="Debug"/>
+        <constructor-arg name="logLevel" value="Warning"/>
     </bean>
 </beans>

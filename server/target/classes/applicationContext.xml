@@ -15,9 +15,9 @@
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close">
-        <property name="url" value="jdbc:mysql://localhost:3306/appinfocenter?useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="url" value="jdbc:mysql://mobile.yamichu.com:3306/appinfocenter?useUnicode=true&amp;characterEncoding=utf8"/>
         <property name="username" value="root"/>
-        <property name="password" value=""/>
+        <property name="password" value="heqiao75518"/>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 
         <property name="initialSize" value="1"/>
@@ -34,21 +34,22 @@
         <property name="basePackage" value="me.josephzhu.appinfocenter.server"/>
     </bean>
     <bean class="me.josephzhu.appinfocenter.server.Config">
-        <property name="redisHost" value="localhost"/>
+        <property name="env" value="prod"/>
+        <property name="redisHost" value="mobile.yamichu.com"/>
         <property name="redisPort" value="6379"/>
         <property name="checkInterval" value="60000"/>
         <property name="sampleDataCount" value="100"/>
-        <property name="triggerLogAlarmLevel" value="Debug"/>
-        <property name="triggerLogAlarmPerMin" value="1"/>
+        <property name="triggerLogAlarmLevel" value="Warning"/>
+        <property name="triggerLogAlarmPerMin" value="10"/>
         <property name="triggerExceptionAlarmPerMin" value="1"/>
     </bean>
 
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
         <property name="protocol" value="smtp" />
-        <property name="host" value="smtp.stackselect.com" />
+        <property name="host" value="smtp.yamichu.com" />
         <property name="port" value="587" />
-        <property name="username" value="zhuye@stackselect.com" />
-        <property name="password" value="" />
+        <property name="username" value="wanglei@yamichu.com" />
+        <property name="password" value="rpt5mpWC2" />
     </bean>
     <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
         <property name="velocityProperties">

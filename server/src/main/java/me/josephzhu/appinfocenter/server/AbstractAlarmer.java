@@ -57,6 +57,7 @@ public abstract class AbstractAlarmer extends Thread
         {
             List<Entry> data = new ArrayList<>();
             String condition = matchCondition(data, app);
+            System.out.println(condition);
             if (!condition.isEmpty())
             {
                 StringBuilder sb = new StringBuilder();
@@ -113,7 +114,7 @@ public abstract class AbstractAlarmer extends Thread
 
                 List<String> emails = dbMapper.getAlarmMailReceivers();
                 for (String email : emails)
-                    emailService.sendAlarmMail(email, condition, sb.toString());
+                    emailService.sendAlarmMail(config.getEnv(), email, condition, sb.toString());
             }
         }
     }

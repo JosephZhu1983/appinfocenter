@@ -26,11 +26,11 @@ public class AppInfoCenter
     private JedisPool jedisPool;
     private String hostIp;
     private String hostName;
-    private String appName;
-    private String appVersion;
-    private String redisHost;
-    private String logLevel;
-    private int redisPort;
+    private final String appName;
+    private final String appVersion;
+    private final String redisHost;
+    private final String logLevel;
+    private final int redisPort;
     private int queueSize;
     private LimitQueue<Entry> data = new LimitQueue<>(queueSize);
     private Thread backgroundDataSubmitter;

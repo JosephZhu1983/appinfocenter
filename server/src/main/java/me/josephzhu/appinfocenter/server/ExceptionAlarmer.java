@@ -31,7 +31,7 @@ public class ExceptionAlarmer extends AbstractAlarmer
 
         int count = dbMapper.getExceptionsCountForAlarm(app.getId(), begin.getTime(), end);
 
-        if (count >= config.getTriggerLogAlarmPerMin())
+        if (count >= config.getTriggerExceptionAlarmPerMin())
         {
             SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
             data.addAll(dbMapper.getExceptionsForAlarm(app.getId(), begin.getTime(), end, config.getSampleDataCount()));

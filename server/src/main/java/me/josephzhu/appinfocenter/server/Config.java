@@ -13,6 +13,18 @@ public class Config
     private String redisHost;
     private int redisPort;
 
+    public String getEnv()
+    {
+        return env;
+    }
+
+    public void setEnv(String env)
+    {
+        this.env = env;
+    }
+
+    private String env;
+
     public int getSampleDataCount()
     {
         return sampleDataCount;

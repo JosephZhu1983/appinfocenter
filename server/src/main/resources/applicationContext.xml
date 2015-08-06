@@ -34,6 +34,7 @@
         <property name="basePackage" value="me.josephzhu.appinfocenter.server"/>
     </bean>
     <bean class="me.josephzhu.appinfocenter.server.Config">
+        <property name="env" value="${env}"/>
         <property name="redisHost" value="${redis.host}"/>
         <property name="redisPort" value="${redis.port}"/>
         <property name="checkInterval" value="${alarm.checkInterval}"/>
