@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cd6f463-3323-4778-a4e5-a64b9eb097ad" name="Default" comment="fix some bugs or something like that!">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/site_war.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/site_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/profiles/dev/config.properties" afterPath="$PROJECT_DIR$/server/profiles/dev/config.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/profiles/prod/config.properties" afterPath="$PROJECT_DIR$/server/profiles/prod/config.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/profiles/stage/config.properties" afterPath="$PROJECT_DIR$/server/profiles/stage/config.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="4cd6f463-3323-4778-a4e5-a64b9eb097ad" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/profiles/prod/config.properties" afterPath="$PROJECT_DIR$/site/profiles/prod/config.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/site/profiles/stage/config.properties" afterPath="$PROJECT_DIR$/site/profiles/stage/config.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="appinfocenter.iws" />
@@ -59,8 +55,38 @@
       <file leaf-file-name="config.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/profiles/stage/config.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8983834">
+            <state vertical-scroll-proportion="0.68058074">
               <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/profiles/stage/config.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/profiles/dev/config.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/profiles/prod/config.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -124,10 +150,8 @@
         <option value="$PROJECT_DIR$/site/src/main/resources/springmvc.xml" />
         <option value="$PROJECT_DIR$/server/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/server/src/main/java/me/josephzhu/appinfocenter/server/HttpLogSubmitter.java" />
-        <option value="$PROJECT_DIR$/site/profiles/prod/config.properties" />
         <option value="$PROJECT_DIR$/demo/profiles/prod/config.properties" />
         <option value="$PROJECT_DIR$/site/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/site/profiles/stage/config.properties" />
         <option value="$PROJECT_DIR$/site/pom.xml" />
         <option value="$PROJECT_DIR$/server/pom.xml" />
         <option value="$PROJECT_DIR$/client/src/main/java/me/josephzhu/appinfocenter/client/AppInfoCenter.java" />
@@ -140,6 +164,8 @@
         <option value="$PROJECT_DIR$/server/profiles/dev/config.properties" />
         <option value="$PROJECT_DIR$/server/profiles/prod/config.properties" />
         <option value="$PROJECT_DIR$/server/profiles/stage/config.properties" />
+        <option value="$PROJECT_DIR$/site/profiles/prod/config.properties" />
+        <option value="$PROJECT_DIR$/site/profiles/stage/config.properties" />
       </list>
     </option>
   </component>
@@ -1220,7 +1246,7 @@
       <workItem from="1438400142765" duration="3719000" />
       <workItem from="1438577172408" duration="744000" />
       <workItem from="1438588580682" duration="884000" />
-      <workItem from="1438765604854" duration="9579000" />
+      <workItem from="1438765604854" duration="9782000" />
     </task>
     <task id="LOCAL-00001" summary="格式化">
       <created>1436715249035</created>
@@ -1342,11 +1368,17 @@
       <option name="project" value="LOCAL" />
       <updated>1438851725005</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fix some bugs or something like that!">
+      <created>1438851882409</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1438851882409</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230072000" />
+    <option name="totallyTimeSpent" value="230275000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1372,7 +1404,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4356688" sideWeight="0.4944731" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41273886" sideWeight="0.49376374" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2624204" sideWeight="0.49376374" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24211298" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -1537,14 +1569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/profiles/dev/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1727,14 +1751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/profiles/stage/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="65" selection-start-line="9" selection-start-column="65" selection-end-line="9" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/me/josephzhu/appinfocenter/server/AbstractSubmitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1797,14 +1813,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/profiles/prod/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49438202">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/main/java/me/josephzhu/appinfocenter/server/DbMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28078818">
@@ -1853,6 +1861,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/site/profiles/stage/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/profiles/prod/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/profiles/dev/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/profiles/dev/config.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1871,7 +1903,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/profiles/stage/config.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8983834">
+        <state vertical-scroll-proportion="0.68058074">
           <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
