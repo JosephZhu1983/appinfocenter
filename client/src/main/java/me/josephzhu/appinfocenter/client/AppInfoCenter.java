@@ -280,6 +280,22 @@ public class AppInfoCenter
             exception.setType(ex.getClass().getName());
 
             data.offer(exception);
+
+            if (ex.getCause() != null)
+            {
+                Throwable innerexception = ex.getCause();
+                Exception exception2 = new Exception();
+                initEntry(exception2, extraInfo);
+
+                exception2.setMessage(innerexception.getMessage());
+                StringWriter sw2 = new StringWriter();
+                PrintWriter pw2 = new PrintWriter(sw2);
+                innerexception.printStackTrace(pw2);
+                exception2.setStackTrace(sw2.toString());
+                exception2.setType(innerexception.getClass().getName());
+
+                data.offer(exception2);
+            }
         }
         catch (java.lang.Exception e)
         {
