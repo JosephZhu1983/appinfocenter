@@ -21,9 +21,9 @@
           destroy-method="close">
         <property name="filters" value="stat,log4j" />
 
-        <property name="url" value="jdbc:mysql://localhost:3306/appinfocenter?useUnicode=true&amp;characterEncoding=utf8"/>
-        <property name="username" value="root"/>
-        <property name="password" value=""/>
+        <property name="url" value="jdbc:mysql://rds40hw52w802ggouh06.mysql.rds.aliyuncs.com:3306/appinfocenter?useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="username" value="aic_backend"/>
+        <property name="password" value="m8vHD7S4njTZ"/>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 
         <property name="initialSize" value="1"/>
@@ -48,8 +48,8 @@
     </bean>
 
     <bean class="me.josephzhu.appinfocenter.site.ApplicationProperties">
-        <property name="websiteBaseUrl" value="http://localhost:8080/"/>
-        <property name="websiteStaticFileBaseUrl" value="http://localhost:8080/static/"/>
+        <property name="websiteBaseUrl" value="http://mobile.yamichu.com:8855/aic/"/>
+        <property name="websiteStaticFileBaseUrl" value="http://mobile.yamichu.com:8855/aic/static/"/>
     </bean>
 
     <bean id="appInfoCenter" class="me.josephzhu.appinfocenter.client.AppInfoCenter">
@@ -61,7 +61,7 @@
         <constructor-arg name="appVersion" value="${app.version}"/>
         <constructor-arg name="redisHost" value="localhost"/>
         <constructor-arg name="redisPort" value="6379"/>
-        <constructor-arg name="logLevel" value="Debug"/>
+        <constructor-arg name="logLevel" value="Warning"/>
     </bean>
     <bean class="me.josephzhu.appinfocenter.client.DumpFilter"/>
 

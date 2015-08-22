@@ -32,7 +32,7 @@ public class AppInfoCenter
     private final String logLevel;
     private final int redisPort;
     private int queueSize;
-    private LimitQueue<Entry> data = new LimitQueue<>(queueSize);
+    private LimitQueue<Entry> data;
     private Thread backgroundDataSubmitter;
     private Thread backgroundStatusSubmitter;
     private Logger logger = Logger.getLogger(AppInfoCenter.class);
@@ -46,6 +46,8 @@ public class AppInfoCenter
         this.redisHost = redisHost;
         this.redisPort = redisPort;
         this.logLevel = logLevel;
+
+        data = new LimitQueue<>(queueSize);
 
         jedisPool = new JedisPool(redisHost, redisPort);
 
@@ -296,8 +298,9 @@ public class AppInfoCenter
         {
             depth ++;
             Throwable inner = ex.getCause();
-            if (inner == null) return;;
+            if (inner == null) return;
             submitexception(inner, extraInfo, depth);
+            ex = inner;
         }
     }
 

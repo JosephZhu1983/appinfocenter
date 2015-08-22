@@ -45,7 +45,7 @@ public class EmailService
         String subject = "*应用程序信息中心报警* " + env  + condition;
         try
         {
-            helper.setFrom("appinfocenter <wanglei@yamichu.com>");
+            helper.setFrom("appinfocenter <notification@yamichu.com>");
             helper.setTo(email);
             helper.setSubject(subject);
             helper.setText(text, true);
