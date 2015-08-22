@@ -265,7 +265,7 @@ public class AppInfoCenter
         exception(ex, null);
     }
 
-    public void exception(Throwable ex, Map<String, Object> extraInfo)
+    private void submitexception(Throwable ex, Map<String, Object> extraInfo, int depth)
     {
         try
         {
@@ -281,25 +281,23 @@ public class AppInfoCenter
 
             data.offer(exception);
 
-            if (ex.getCause() != null)
-            {
-                Throwable innerexception = ex.getCause();
-                Exception exception2 = new Exception();
-                initEntry(exception2, extraInfo);
-
-                exception2.setMessage(innerexception.getMessage());
-                StringWriter sw2 = new StringWriter();
-                PrintWriter pw2 = new PrintWriter(sw2);
-                innerexception.printStackTrace(pw2);
-                exception2.setStackTrace(sw2.toString());
-                exception2.setType(innerexception.getClass().getName());
-
-                data.offer(exception2);
-            }
         }
         catch (java.lang.Exception e)
         {
             logger.warn("appinfocenter:" + e.toString());
+        }
+    }
+
+    public void exception(Throwable ex, Map<String, Object> extraInfo)
+    {
+        int depth = 1;
+        submitexception(ex, extraInfo, depth);
+        while (depth <= 5)
+        {
+            depth ++;
+            Throwable inner = ex.getCause();
+            if (inner == null) return;;
+            submitexception(inner, extraInfo, depth);
         }
     }
 
