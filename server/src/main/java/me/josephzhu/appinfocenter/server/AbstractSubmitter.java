@@ -2,6 +2,7 @@ package me.josephzhu.appinfocenter.server;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPubSub;
 
@@ -46,6 +47,9 @@ public abstract class AbstractSubmitter extends Thread
     private void subscribe()
     {
         Jedis jedis = new Jedis(config.getRedisHost(), config.getRedisPort());
+        if(!StringUtils.isEmpty(config.getRedisPassword())){
+            jedis.auth(config.getRedisPassword());
+        }
         jedis.subscribe(new JedisPubSub()
         {
             @Override

@@ -12,6 +12,7 @@ public class Config
     private int sampleDataCount;
     private String redisHost;
     private int redisPort;
+    private String redisPassword;
 
     public String getEnv()
     {
@@ -96,5 +97,13 @@ public class Config
     public void setRedisPort(int redisPort)
     {
         this.redisPort = redisPort;
+    }
+
+    public String getRedisPassword() {
+        return redisPassword;
+    }
+
+    public void setRedisPassword(String redisPassword) {
+        this.redisPassword = redisPassword;
     }
 }

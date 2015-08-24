@@ -60,6 +60,7 @@
         <constructor-arg name="appName" value="${app.name}"/>
         <constructor-arg name="appVersion" value="${app.version}"/>
         <constructor-arg name="redisHost" value="${redis.host}"/>
+        <constructor-arg name="redisPassword" value="${redis.password}"/>
         <constructor-arg name="redisPort" value="${redis.port}"/>
         <constructor-arg name="logLevel" value="${log.level}"/>
     </bean>

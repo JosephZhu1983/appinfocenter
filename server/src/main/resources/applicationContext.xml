@@ -37,6 +37,7 @@
         <property name="env" value="${env}"/>
         <property name="redisHost" value="${redis.host}"/>
         <property name="redisPort" value="${redis.port}"/>
+        <property name="redisPassword" value="${redis.password}"/>
         <property name="checkInterval" value="${alarm.checkInterval}"/>
         <property name="sampleDataCount" value="${alarm.sampleDataCount}"/>
         <property name="triggerLogAlarmLevel" value="${alarm.triggerLogAlarmLevel}"/>

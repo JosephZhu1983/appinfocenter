@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import me.josephzhu.appinfocenter.common.*;
 import me.josephzhu.appinfocenter.common.Exception;
 import org.apache.log4j.Logger;
+import org.springframework.util.StringUtils;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
@@ -29,6 +30,7 @@ public class AppInfoCenter
     private final String appName;
     private final String appVersion;
     private final String redisHost;
+    private final String redisPassword;
     private final String logLevel;
     private final int redisPort;
     private int queueSize;
@@ -37,7 +39,7 @@ public class AppInfoCenter
     private Thread backgroundStatusSubmitter;
     private Logger logger = Logger.getLogger(AppInfoCenter.class);
 
-    public AppInfoCenter(StatusCallback callback, int queueSize, String appName, String appVersion, String redisHost, int redisPort, String logLevel)
+    public AppInfoCenter(StatusCallback callback, int queueSize, String appName, String appVersion, String redisHost, int redisPort,String redisPassword, String logLevel)
     {
         this.callback = callback;
         this.queueSize = queueSize;
@@ -45,12 +47,12 @@ public class AppInfoCenter
         this.appVersion = appVersion;
         this.redisHost = redisHost;
         this.redisPort = redisPort;
+        this.redisPassword = redisPassword;
         this.logLevel = logLevel;
 
         data = new LimitQueue<>(queueSize);
 
         jedisPool = new JedisPool(redisHost, redisPort);
-
         try
         {
             hostIp = InetAddress.getLocalHost().getHostAddress();
@@ -185,6 +187,9 @@ public class AppInfoCenter
         if (!message.equalsIgnoreCase(""))
         {
             Jedis jedis = jedisPool.getResource();
+            if(!StringUtils.isEmpty(redisPassword)){
+                jedis.auth(redisPassword);
+            }
             try
             {
                 jedis.publish(data.getChannelName(), message);
