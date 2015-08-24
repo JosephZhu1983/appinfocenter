@@ -15,9 +15,9 @@
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close">
-        <property name="url" value="jdbc:mysql://localhost:3306/appinfocenter?useUnicode=true&amp;characterEncoding=utf8"/>
-        <property name="username" value="root"/>
-        <property name="password" value=""/>
+        <property name="url" value="jdbc:mysql://rdslcm7vsi2ki5ax015y.mysql.rds.aliyuncs.com:3306/appinfocenter?useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="username" value="aic_server"/>
+        <property name="password" value="Aic_123"/>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 
         <property name="initialSize" value="1"/>
@@ -34,9 +34,10 @@
         <property name="basePackage" value="me.josephzhu.appinfocenter.server"/>
     </bean>
     <bean class="me.josephzhu.appinfocenter.server.Config">
-        <property name="env" value="dev"/>
+        <property name="env" value="stage"/>
         <property name="redisHost" value="localhost"/>
         <property name="redisPort" value="6379"/>
+        <property name="redisPassword" value="yamikitchen@#"/>
         <property name="checkInterval" value="60000"/>
         <property name="sampleDataCount" value="100"/>
         <property name="triggerLogAlarmLevel" value="Warning"/>
@@ -48,8 +49,8 @@
         <property name="protocol" value="smtp" />
         <property name="host" value="smtp.yamichu.com" />
         <property name="port" value="587" />
-        <property name="username" value="wanglei@yamichu.com" />
-        <property name="password" value="" />
+        <property name="username" value="notification@yamichu.com" />
+        <property name="password" value="Abcd12345" />
     </bean>
     <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
         <property name="velocityProperties">
