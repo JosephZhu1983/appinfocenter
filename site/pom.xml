@@ -42,6 +42,9 @@
         </filters>
         <resources>
             <resource>
+                <directory>profiles/${build.profile.id}/</directory>
+            </resource>
+            <resource>
                 <filtering>true</filtering>
                 <directory>src/main/resources</directory>
             </resource>
