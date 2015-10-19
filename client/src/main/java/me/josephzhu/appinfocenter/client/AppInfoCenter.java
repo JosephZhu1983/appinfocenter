@@ -325,7 +325,7 @@ public class AppInfoCenter
             log.setQueryString(queryString);
             log.setRequestHeader(requestHeader);
             log.setRequestBody(requestBody);
-            log.setRequestHeader(responseHeader);
+            log.setResponseHeader(responseHeader);
             log.setResponseBody(responseBody);
             data.offer(log);
         }

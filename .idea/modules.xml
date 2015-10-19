@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/appinfocenter.iml" filepath="$PROJECT_DIR$/appinfocenter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/client/client.iml" filepath="$PROJECT_DIR$/client/client.iml" />
-      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/site/site.iml" filepath="$PROJECT_DIR$/site/site.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/src/main/main.iml" filepath="$PROJECT_DIR$/demo/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/site/src/main/main1.iml" filepath="$PROJECT_DIR$/site/src/main/main1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client/src/main/main2.iml" filepath="$PROJECT_DIR$/client/src/main/main2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/src/main/main3.iml" filepath="$PROJECT_DIR$/common/src/main/main3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/src/main/main4.iml" filepath="$PROJECT_DIR$/server/src/main/main4.iml" />
     </modules>
   </component>
 </project>
