@@ -309,14 +309,24 @@ public class AppInfoCenter
         }
     }
 
-    public void httplog(String request, String response)
+    public void httplog(String userId, String url,
+             String queryString,
+             String requestHeader,
+             String requestBody,
+             String responseHeader,
+             String responseBody)
     {
         try
         {
             HttpLog log = new HttpLog();
             initEntry(log,null);
-            log.setRequest(request);
-            log.setResponse(response);
+            log.setUserId(userId);
+            log.setUrl(url);
+            log.setQueryString(queryString);
+            log.setRequestHeader(requestHeader);
+            log.setRequestBody(requestBody);
+            log.setRequestHeader(responseHeader);
+            log.setResponseBody(responseBody);
             data.offer(log);
         }
         catch (java.lang.Exception e)

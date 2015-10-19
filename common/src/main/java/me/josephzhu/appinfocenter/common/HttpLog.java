@@ -11,26 +11,82 @@ public class HttpLog extends Entry
         return "appinfocenter/httplog";
     }
 
-    public String getRequest()
+    private String userId;
+
+    public String getUserId()
     {
-        return request;
+        return userId;
     }
 
-    public void setRequest(String request)
+    public void setUserId(String userId)
     {
-        this.request = request;
+        this.userId = userId;
     }
 
-    public String getResponse()
+    public String getUrl()
     {
-        return response;
+        return url;
     }
 
-    public void setResponse(String response)
+    public void setUrl(String url)
     {
-        this.response = response;
+        this.url = url;
     }
 
-    private String request;
-    private String response;
+    public String getQueryString()
+    {
+        return queryString;
+    }
+
+    public void setQueryString(String queryString)
+    {
+        this.queryString = queryString;
+    }
+
+    public String getRequestHeader()
+    {
+        return requestHeader;
+    }
+
+    public void setRequestHeader(String requestHeader)
+    {
+        this.requestHeader = requestHeader;
+    }
+
+    public String getRequestBody()
+    {
+        return requestBody;
+    }
+
+    public void setRequestBody(String requestBody)
+    {
+        this.requestBody = requestBody;
+    }
+
+    public String getResponseHeader()
+    {
+        return responseHeader;
+    }
+
+    public void setResponseHeader(String responseHeader)
+    {
+        this.responseHeader = responseHeader;
+    }
+
+    public String getResponseBody()
+    {
+        return responseBody;
+    }
+
+    public void setResponseBody(String responseBody)
+    {
+        this.responseBody = responseBody;
+    }
+
+    private String url;
+    private String queryString;
+    private String requestHeader;
+    private String requestBody;
+    private String responseHeader;
+    private String responseBody;
 }
