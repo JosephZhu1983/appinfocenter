@@ -55,9 +55,9 @@ public interface MainMapper
     List<me.josephzhu.appinfocenter.common.Exception> getExceptions(@Param("begin") Date begin, @Param("end") Date end, @Param("contextId") String contextId, @Param("types") String[] types, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds, @Param("start") int start, @Param("count") int count);
 
 
-    int getHttpLogsCount(@Param("begin") Date begin, @Param("end") Date end, @Param("url") String url, @Param("userId") String userId, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds);
+    int getHttpLogsCount(@Param("begin") Date begin, @Param("end") Date end,@Param("surl") String url, @Param("userId") String userId, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds);
 
-    List<me.josephzhu.appinfocenter.common.HttpLog> getHttpLogs(@Param("begin") Date begin, @Param("end") Date end, @Param("url") String url, @Param("userId") String userId, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds, @Param("start") int start, @Param("count") int count);
+    List<me.josephzhu.appinfocenter.common.HttpLog> getHttpLogs(@Param("begin") Date begin, @Param("end") Date end, @Param("surl") String url, @Param("userId") String userId, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds, @Param("start") int start, @Param("count") int count);
 
     @Select("select id,name,ip from servers where id in (select distinct server_id from httplogs where app_id = #{id})")
     List<Server> getHttpLogServers(@Param("id") int id);
