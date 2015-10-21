@@ -54,11 +54,22 @@ public interface MainMapper
 
     List<me.josephzhu.appinfocenter.common.Exception> getExceptions(@Param("begin") Date begin, @Param("end") Date end, @Param("contextId") String contextId, @Param("types") String[] types, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds, @Param("start") int start, @Param("count") int count);
 
+
+    int getHttpLogsCount(@Param("begin") Date begin, @Param("end") Date end, @Param("url") String url, @Param("userId") String userId, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds);
+
+    List<me.josephzhu.appinfocenter.common.HttpLog> getHttpLogs(@Param("begin") Date begin, @Param("end") Date end, @Param("url") String url, @Param("userId") String userId, @Param("appId") Integer appId, @Param("serverIds") int[] serverIds, @Param("start") int start, @Param("count") int count);
+
+    @Select("select id,name,ip from servers where id in (select distinct server_id from httplogs where app_id = #{id})")
+    List<Server> getHttpLogServers(@Param("id") int id);
+
     @Select("select count(0) from logs where create_time>=#{begin} and create_time<=#{end} and app_id=${app_id} and level=${level}")
     int getLogChartData(@Param("level") int level, @Param("app_id") int appId, @Param("begin") Date begin, @Param("end") Date end);
 
     @Select("select count(0) from exceptions where create_time>=#{begin} and create_time<=#{end} and app_id=${app_id}")
     int getExceptionChartCount(@Param("app_id") int appId, @Param("begin") Date begin, @Param("end") Date end);
+
+    @Select("select count(0) from httplogs where create_time>=#{begin} and create_time<=#{end} and app_id=${app_id}")
+    int getHttpLogsChartCount(@Param("app_id") int appId, @Param("begin") Date begin, @Param("end") Date end);
 
     @Delete("delete from app_status where id=#{id}")
     int deleteStatus(@Param("id") int statusId);

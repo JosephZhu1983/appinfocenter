@@ -40,6 +40,7 @@
                 <ul class="treeview-menu">
                     <li><a href="<%=request.getContextPath()%>/status/${app.id}" <c:if test='${section =="status"}'>style="color: white"</c:if>>状态</a></li>
                     <li><a href="<%=request.getContextPath()%>/log/${app.id}"  <c:if test='${section =="log"}'>style="color: white"</c:if>>日志</a></li>
+                    <li><a href="<%=request.getContextPath()%>/httplog/${app.id}"  <c:if test='${section =="httplog"}'>style="color: white"</c:if>>请求日志</a></li>
                     <li><a href="<%=request.getContextPath()%>/exception/${app.id}"
                            <c:if test='${section =="exception"}'>style="color: white"</c:if>>异常</a></li>
                 </ul>

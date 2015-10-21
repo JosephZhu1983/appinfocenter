@@ -59,6 +59,10 @@
                 <p>查看应用程序产生的日志</p>
             </div>
             <div class="callout callout-info">
+                <h4>请求日志</h4>
+                <p>查看应用程序产生的请求日志</p>
+            </div>
+            <div class="callout callout-info">
                 <h4>异常</h4>
                 <p>查看应用程序产生的已处理或未处理异常</p>
             </div>

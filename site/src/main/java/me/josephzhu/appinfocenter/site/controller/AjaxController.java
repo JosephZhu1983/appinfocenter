@@ -140,4 +140,48 @@ public class AjaxController
         chartsData.setData(data);
         return chartsData;
     }
+
+    @RequestMapping(value = "/httplogcharts/{appId}", method = RequestMethod.GET)
+    public ChartsData httplogcharts(@PathVariable Integer appId)
+    {
+
+
+        ChartsData chartsData = new ChartsData();
+        List<Date> dates = new ArrayList<>();
+        List<Series> data = new ArrayList<>();
+        Series httplog = new Series();
+        httplog.setName("HttpLog");
+        httplog.setType("line");
+        httplog.setData(new ArrayList<Integer>());
+        data.add(httplog);
+
+        Calendar now = Calendar.getInstance();
+        now.setTime(new Date());
+        now.add(Calendar.MINUTE, 30);
+
+        Calendar begin = Calendar.getInstance();
+        begin.setTime(new Date());
+        begin.set(Calendar.SECOND, 0);
+        begin.add(Calendar.DATE, -3);
+
+
+        while (begin.getTime().before(now.getTime()))
+        {
+            Calendar tz = Calendar.getInstance();
+            tz.setTime(begin.getTime());
+            tz.add(Calendar.HOUR, 8);
+            dates.add(tz.getTime());
+
+            Calendar end = Calendar.getInstance();
+            end.setTime(begin.getTime());
+            end.add(Calendar.MINUTE, 30);
+
+            httplog.getData().add(mainMapper.getHttpLogsChartCount(appId, begin.getTime(), end.getTime()));
+            begin.setTime(end.getTime());
+        }
+
+        chartsData.setX(dates);
+        chartsData.setData(data);
+        return chartsData;
+    }
 }

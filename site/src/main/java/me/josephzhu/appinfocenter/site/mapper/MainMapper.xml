@@ -140,4 +140,71 @@
         </if>
     </select>
 
+
+    <select id="getHttpLogs" resultType="me.josephzhu.appinfocenter.common.HttpLog">
+        select
+        l.id, a.name as appName, a.version as appVersion, s.name as serverName, s.ip as serverIp,
+        l.userId, l.url, l.queryString,l.requestHeader, l.responseHeader, l.requestBody, l.responseBody, l.create_time as time from httplogs l
+        inner join apps a on l.app_id = a.id
+        inner join servers s on l.server_id = s.id
+        where l.app_id = #{appId}
+        <if test="begin != null">
+            <![CDATA[
+            and l.create_time >= #{begin}
+            ]]>
+        </if>
+        <if test="end != null">
+            <![CDATA[
+            and l.create_time <= #{end}
+             ]]>
+        </if>
+
+        <if test="serverIds != null">
+            and l.server_id in
+            <foreach item="serverId" index="index" collection="serverIds" open="(" separator="," close=")">
+                #{serverId}
+            </foreach>
+        </if>
+
+        <if test="userId != null">
+            and l.userId = #{userId}
+        </if>
+        <if test="url != null">
+            and l.url like '%#{url}%'
+        </if>
+        order by l.create_time desc
+        limit #{start},#{count}
+
+    </select>
+
+    <select id="getHttpLogsCount" resultType="int">
+        select count(0) from httplogs l
+        inner join apps a on l.app_id = a.id
+        inner join servers s on l.server_id = s.id
+        where l.app_id = #{appId}
+        <if test="begin != null">
+            <![CDATA[
+            and l.create_time >= #{begin}
+            ]]>
+        </if>
+        <if test="end != null">
+            <![CDATA[
+            and l.create_time <= #{end}
+             ]]>
+        </if>
+
+        <if test="serverIds != null">
+            and l.server_id in
+            <foreach item="serverId" index="index" collection="serverIds" open="(" separator="," close=")">
+                #{serverId}
+            </foreach>
+        </if>
+
+        <if test="userId != null">
+            and l.userId = #{userId}
+        </if>
+        <if test="url != null">
+            and l.url like '%#{url}%'
+        </if>
+    </select>
 </mapper>

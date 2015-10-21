@@ -99,6 +99,10 @@
                         <i class="fa fa-refresh fa-spin"></i>
                     </div></div>
 
+                    <div id="httplogchart" style="height:400px"> <div class="overlay" id="loadinghttplogchart">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div></div>
+
 
                     <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
 
@@ -159,7 +163,7 @@
                                     function (ec) {
 
                                         var logchart = ec.init(document.getElementById('logchart'));
-
+                                        var httplogchart = ec.init(document.getElementById('httplogchart'));
                                         var exceptionchart = ec.init(document.getElementById('exceptionchart'));
 
 
@@ -174,6 +178,45 @@
                                             legend: {
                                                 data: ['Debug', 'Info', 'Warning', 'Error']
                                             },
+                                            toolbox: {
+                                                show: true,
+                                                feature: {
+                                                    mark: {show: true},
+                                                    dataView: {show: true, readOnly: false},
+                                                    magicType: {show: true, type: ['line', 'bar']},
+                                                    restore: {show: true},
+                                                    saveAsImage: {show: true}
+                                                }
+                                            },
+                                            calculable: true,
+                                            xAxis: [
+                                                {
+                                                    type: 'category',
+                                                    data: []
+                                                }
+                                            ],
+
+                                            yAxis: [
+                                                {
+                                                    scale: true,
+                                                    type: 'value',
+                                                    axisLabel: {
+                                                        formatter: '{value} 条'
+                                                    }
+                                                }
+                                            ],
+
+                                            series: []
+                                        };
+                                        var httplogoption = {
+                                            title: {
+                                                text: '请求日志数据量',
+                                                subtext: '（跨度：3天；粒度：30分钟）'
+                                            },
+                                            tooltip: {
+                                                trigger: 'axis'
+                                            },
+
                                             toolbox: {
                                                 show: true,
                                                 feature: {
@@ -267,6 +310,25 @@
                                         $.ajax({
                                             type: "get",
 
+                                            url: "<%=request.getContextPath()%>/ajax/httplogcharts/${appInfo.id}",
+                                            dataType: "json",
+                                            success: function (result) {
+
+                                                if (result) {
+                                                    httplogoption.xAxis[0].data = result.x;
+                                                    httplogoption.series = result.data;
+                                                    httplogchart.setOption(httplogoption);
+                                                    $("#loadinghttplogchart").hide();
+                                                }
+                                            },
+                                            error: function () {
+                                                alert("错误！");
+                                            }
+                                        });
+
+                                        $.ajax({
+                                            type: "get",
+
                                             url: "<%=request.getContextPath()%>/ajax/exceptioncharts/${appInfo.id}",
                                             dataType: "json",
                                             success: function (result) {
@@ -284,6 +346,8 @@
                                         });
 
                                     }
+
+
                             );
                         });
 

@@ -1,6 +1,7 @@
 package me.josephzhu.appinfocenter.site.controller;
 
 import me.josephzhu.appinfocenter.client.AppInfoCenter;
+import me.josephzhu.appinfocenter.common.HttpLog;
 import me.josephzhu.appinfocenter.common.Log;
 import me.josephzhu.appinfocenter.site.entity.App;
 import me.josephzhu.appinfocenter.site.entity.LoginUser;
@@ -212,6 +213,52 @@ public class MainController
         modelAndView.addObject("currentAppId", appId);
         modelAndView.addObject("apps", apps);
         modelAndView.addObject("section", "exception");
+
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        if (begin != null)
+            modelAndView.addObject("begin", format.format(begin));
+        if (end != null)
+            modelAndView.addObject("end", format.format(end));
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/httplog/{appId}", method = RequestMethod.GET)
+    public ModelAndView httplog(@PathVariable Integer appId,
+                                  @RequestParam(value = "userId", required = false) String userId,
+                                @RequestParam(value = "url", required = false) String url,
+                                  @RequestParam(value = "begin", required = false) Date begin,
+                                  @RequestParam(value = "end", required = false) Date end,
+                                  @RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
+                                  @RequestParam(value = "serverIds", required = false) int[] serverIds
+                             )
+    {
+        ModelAndView modelAndView = new ModelAndView("httplog");
+
+        int logCount = mainMapper.getHttpLogsCount(begin, end, url, userId, appId, serverIds);
+        int pageCount = PagerUtil.getPageCount(logCount, PAGESIZE);
+        if (page < 1)
+        {
+            page = 1;
+        } else if (page > pageCount)
+        {
+            page = pageCount;
+        }
+        List<Integer> pageList = PagerUtil.generatePageList(page, pageCount);
+        modelAndView.addObject("pageList", pageList);
+        modelAndView.addObject("pageCount", pageCount);
+        modelAndView.addObject("p", page);
+        modelAndView.addObject("serverIds", serverIds);
+
+        modelAndView.addObject("url", url);
+        modelAndView.addObject("userId", userId);
+        List<HttpLog> logs = mainMapper.getHttpLogs(begin, end, url, userId, appId, serverIds, (page - 1) * PAGESIZE, PAGESIZE);
+        modelAndView.addObject("logs", logs);
+        modelAndView.addObject("servers", mainMapper.getHttpLogServers(appId));
+        List<App> apps = mainMapper.getApps();
+        modelAndView.addObject("currentAppId", appId);
+        modelAndView.addObject("apps", apps);
+        modelAndView.addObject("section", "httplog");
 
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
