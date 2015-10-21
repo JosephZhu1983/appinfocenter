@@ -150,7 +150,7 @@
         where l.app_id = #{appId}
 
         <if test="surl != null">
-            and l.url like '$%{surl}%'
+            and l.url like '%${surl}%'
         </if>
 
         <if test="begin != null">
@@ -187,7 +187,7 @@
         where l.app_id = #{appId}
 
         <if test="surl != null">
-            and l.url like '$%{surl}%'
+            and l.url like '%${surl}%'
         </if>
 
         <if test="begin != null">
