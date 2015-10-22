@@ -154,7 +154,7 @@
                                                         id="myModalLabel"> ${log.serverName}/${log.serverIp} @
                                                         <fmt:formatDate value="${log.time}"
                                                                         pattern="yyyy/MM/dd HH:mm:ss"/>
-                                                        - ${log.url}{log.queryString}</h4>
+                                                        - ${log.url}?${log.queryString}</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>请求头：${log.requestHeader}</p>
