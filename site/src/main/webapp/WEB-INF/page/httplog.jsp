@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/custom-functions.tld" prefix="fn" %>
+<%@ taglib prefix="jstlfn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 
@@ -15,9 +16,10 @@
     <link href="${appcfg.websiteStaticFileBaseUrl}bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- Font Awesome Icons -->
-    <link href="${appcfg.websiteStaticFileBaseUrl}font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="${appcfg.websiteStaticFileBaseUrl}font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
     <!-- Ionicons -->
-    <link href="http://cdn.staticfile.org/ionicons/1.5.2/css/ionicons.css" rel="stylesheet" type="text/css" />
+    <link href="http://cdn.staticfile.org/ionicons/1.5.2/css/ionicons.css" rel="stylesheet" type="text/css"/>
 
     <link href="${appcfg.websiteStaticFileBaseUrl}dist/css/AdminLTE.css" rel="stylesheet" type="text/css"/>
     <link href="${appcfg.websiteStaticFileBaseUrl}dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css"/>
@@ -40,6 +42,7 @@
     <script src="${appcfg.websiteStaticFileBaseUrl}plugins/select2/select2.full.min.js" type="text/javascript"></script>
     <script src="${appcfg.websiteStaticFileBaseUrl}ZeroClipboard.min.js" type="text/javascript"></script>
 
+    <script type="text/javascript" src="${appcfg.websiteStaticFileBaseUrl}renderjson.js"></script>
 
 </head>
 
@@ -133,7 +136,14 @@
                                 <td>${log.serverIp}</td>
                                 <td>${log.userId}</td>
                                 <td>${log.url}</td>
-                                <td>${log.queryString}</td>
+                                <td>
+                                    <c:if test="${jstlfn:length(log.queryString)>40}">
+                                        ${jstlfn:substring(log.queryString, 0, 40)}
+                                    </c:if>
+                                    <c:if test="${jstlfn:length(log.queryString)<=40}">
+                                        ${log.queryString}
+                                    </c:if>
+                                </td>
                                 <td>
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn-xs bg-blue" data-toggle="modal"
@@ -158,9 +168,39 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>请求头：${log.requestHeader}</p>
-                                                    <p>请求主体：${log.requestBody}</p>
+
+                                                    <p>请求主体：
+                                                        <c:choose>
+                                                        <c:when test="${jstlfn:startsWith(log.requestBody, '{')}">
+                                                    <div id="requestJson${log.id}"/>
+                                                    <script> document.getElementById(requestJson${log.id}").appendChild(renderjson(${log.responseBody}));</script>
+                                                    </c:when>
+                                                    <c:when test="${jstlfn:startsWith(log.responseBody, '<')}">
+                                                        ${jstlfn:escapeXml(log.responseBody)}</p>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        ${log.responseBody}
+                                                    </c:otherwise>
+                                                    </c:choose>
+                                                    </p>
+
                                                     <p>响应头：${log.responseHeader}</p>
-                                                    <p>响应主体：${log.responseBody}</p>
+
+                                                    <p>响应主体：
+                                                    <c:choose>
+                                                        <c:when test="${jstlfn:startsWith(log.responseBody, '{')}">
+                                                            <div id="responseJson${log.id}"/>
+                                                            <script> document.getElementById(responseJson${log.id}").appendChild(renderjson(${log.responseBody}));</script>
+                                                        </c:when>
+                                                        <c:when test="${jstlfn:startsWith(log.responseBody, '<')}">
+                                                            ${jstlfn:escapeXml(log.responseBody)}</p>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            ${log.responseBody}
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                    </p>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -252,7 +292,6 @@
             });
 
 
-
             $(".pagination a").click(function () {
                 var page = $(this).attr("data-p");
 
@@ -300,7 +339,6 @@
 
                 $("#serverIds option").attr("selected", "seleted")
             });
-
 
 
         });
