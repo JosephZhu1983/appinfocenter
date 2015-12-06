@@ -26,9 +26,11 @@ public interface DbMapper
                   @Param("p_app_version") String appVersion,
                   @Param("p_extrainfo") String extraInfo);
 
-    @Select("call sp_create_httplog (#{p_create_time},#{p_server_name},#{p_server_ip},#{p_app_name},#{p_app_version},#{p_userId},#{p_url},#{p_queryString},#{p_requestHeader},#{p_requestBody},#{p_responseHeader},#{p_responseBody})")
+    @Select("call sp_create_httplog (#{p_create_time},#{p_server_name},#{p_server_ip},#{p_app_name},#{p_app_version},#{p_userId},#{p_url},#{p_queryString},#{p_requestHeader},#{p_requestBody},#{p_responseHeader},#{p_responseBody},#{p_ip},#{p_method})")
     int createHttpLog(@Param("p_userId") String userId,
                       @Param("p_url") String url,
+                      @Param("p_ip") String ip,
+                      @Param("p_method") String method,
                       @Param("p_queryString") String queryString,
                       @Param("p_requestHeader") String requestHeader,
                       @Param("p_requestBody") String requestBody,

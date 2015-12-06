@@ -33,6 +33,8 @@ public class HttpLogSubmitter extends AbstractSubmitter
             int error = dbMapper.createHttpLog(
                     log.getUserId(),
                     log.getUrl(),
+                    log.getIp(),
+                    log.getMethod(),
                     log.getQueryString(),
                     log.getRequestHeader(),
                     log.getRequestBody(),

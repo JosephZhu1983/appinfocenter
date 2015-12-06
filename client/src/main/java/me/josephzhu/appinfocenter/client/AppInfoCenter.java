@@ -309,7 +309,7 @@ public class AppInfoCenter
         }
     }
 
-    public void httplog(String userId, String url,
+    public void httplog(String userId, String url, String ip, String method,
              String queryString,
              String requestHeader,
              String requestBody,
@@ -322,6 +322,8 @@ public class AppInfoCenter
             initEntry(log,null);
             log.setUserId(userId);
             log.setUrl(url);
+            log.setIp(ip);
+            log.setMethod(method);
             log.setQueryString(queryString);
             log.setRequestHeader(requestHeader);
             log.setRequestBody(requestBody);

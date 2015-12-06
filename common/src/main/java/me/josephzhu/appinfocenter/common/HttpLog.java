@@ -89,4 +89,27 @@ public class HttpLog extends Entry
     private String requestBody;
     private String responseHeader;
     private String responseBody;
+    private String ip;
+
+    public String getMethod()
+    {
+        return method;
+    }
+
+    public void setMethod(String method)
+    {
+        this.method = method;
+    }
+
+    public String getIp()
+    {
+        return ip;
+    }
+
+    public void setIp(String ip)
+    {
+        this.ip = ip;
+    }
+
+    private String method;
 }
